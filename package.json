@@ -1,0 +1,16 @@
+{
+  "name": "highloka_test_js",
+  "version": "1.0.0",
+  "description": "Highloka Web Test Suite",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "selenium-webdriver": "^4.32.0"
+  }
+}
