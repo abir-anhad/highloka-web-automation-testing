@@ -23,7 +23,7 @@ async function runContactFormTests() {
 
         logger.log(`Navigating to URL: ${APP_CONFIG.INITIAL_APP_URL}`);
         await browserManager.get(APP_CONFIG.INITIAL_APP_URL);
-        await sleep(1000);
+        await sleep(20000);
 
         await contactPage.navigateToContactPage();
 
