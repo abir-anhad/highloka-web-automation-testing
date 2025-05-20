@@ -21,7 +21,7 @@ async scrollDownThenUp() {
   this.logger.log('Testing scroll down then up on scrollable div...');
 
   // Locate the scrollable div
-  const scrollableDiv = await this.driver.findElement({xpath:'//*[@id="__next"]/div'}); // update selector if needed
+  const scrollableDiv = await this.driver.findElement({xpath:'/html/body/div/div/main'}); // update selector if needed
 
   // Scroll to bottom
   await this.driver.executeScript(
