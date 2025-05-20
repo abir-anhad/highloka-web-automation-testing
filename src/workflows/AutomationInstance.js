@@ -48,7 +48,7 @@ export class AutomationInstance {
             await this.browserManager.maximizeWindow();
             this.logger.log(`Mapsd to ${APP_CONFIG.INITIAL_APP_URL}`);
 
-            this.homePage.clickSection2TrendingConcertLeftArrow();
+            this.homePage.clickHeaderHomeButtonInHeroContext();
             // Open Login Popup
             // this.loadLoginPopup();
 

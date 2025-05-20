@@ -21,6 +21,7 @@ export const APP_CONFIG = {
     // These are your existing XPaths for the email and submit button within that popup
     APP_POPUP_EMAIL_INPUT_XPATH: "/html/body/div[1]/div/div/div[2]/div/div/div[2]/div[2]/div/div[2]/form/input",
     APP_POPUP_SUBMIT_BUTTON_XPATH: "/html/body/div[1]/div/div/div[2]/div/div/div[2]/div[2]/div/div[2]/form/div/button",
+    APP_POPUP_CLOSE_BUTTON_XPATH: "/html/body/div[1]/div/div/div[2]/div/div/div[3]/div",
 
     // OTP Flow specific (if the above popup leads to this, or if triggered differently)
     OTP_FIELD_NAME_PREFIX: "otpInput",
@@ -28,10 +29,22 @@ export const APP_CONFIG = {
     VERIFY_OTP_BUTTON_XPATH: `//*[@id="__next"]/div/div/div[2]/div/div/div[2]/div[2]/div/div[2]/form/button`,
 
     // Home Page (Pre-Login) XPaths - As provided by user
+    // section 1
+    HOME_PAGE_SECTION1_TO_SCROLL_XPATH: "/html/body/div[1]/div/main/div/div[2]/div/div/section[1]", 
     HOME_PAGE_HEADER_HOME_BUTTON_XPATH: "/html/body/div/div/div/nav/div[2]/div/a[1]",
     HOME_PAGE_HERO_JOIN_CONCERTS_BUTTON_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[1]/div/div/button[2]",
     HOME_PAGE_HERO_DISCOVER_ARTISTS_BUTTON_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[1]/div/div/button[1]",
-    HOME_PAGE_SECTION3_JOIN_CONCERTS_BUTTON_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[3]/div/button",
+    HOME_PAGE_HERO_JOIN_CONCERTS_BUTTON_XPATH: "/html/body/div[1]/div/main/div/div[2]/div/div/section[1]/div/div/button[2]",
+    
+    // section 2
+    HOME_PAGE_SECTION2_TO_SCROLL_XPATH: "/html/body/div[1]/div/main/div/div[2]/div/div/section[2]", 
+    HOME_PAGE_LEFT_ARROW: "/html/body/div[1]/div/main/div/div[2]/div/div/section[2]/div[1]/div[2]/div[1]/div",
+    HOME_PAGE_RIGHT_ARROW: "/html/body/div[1]/div/main/div/div[2]/div/div/section[2]/div[1]/div[2]/div[2]",
+    TRENDING_CONCERT_ITEM_XPATH: `/html/body/div/div/main/div/div[2]/div/div/section[2]/div[2]/div/div[1]`,
+   
+    // section 3
+    HOME_PAGE_SECTION3_TO_SCROLL_XPATH: "/html/body/div[1]/div/main/div/div[2]/div/div/section[3]", 
+
 
     // Subsequent form steps XPaths (Original Full Flow - for reference from Python script)
     NAME_INPUT_FIELD_XPATH: "/html/body/div/div/div/div[2]/div/div/div[2]/div/div[2]/div[4]/form/input",
@@ -46,15 +59,12 @@ export const APP_CONFIG = {
 
     IMAGE_PATH_TO_UPLOAD: "/img", // ** IMPORTANT: REPLACE THIS PATH with a valid absolute image path for full flow **
 
+
     // Concert Page XPaths and URL (Original Full Flow - for reference from Python script)
     CONCERT_REDIRECT_URL: "https://www.highloka.com/concerts/foodforsoul",
     GET_TICKET_OR_FIRST_ENTER_CONCERT_XPATH: "/html/body/div/div/main/section[1]/div/div[1]/div[2]/div[6]/div/div/span",
     FINAL_ENTER_CONCERT_XPATH: "/html/body/div/div/main/div/section/div/div/div[2]/div/div[3]/a/div/span",
 
-    // Trending Concert Slider Arror XPaths 
-    TRENDING_CONCERT_SLIDER_SECTION: `//*[@id="__next"]/div/main/div/div[2]/div/div/section[2]`,
-    TRENDING_CONCERT_LEFT_ARROW_XPATH : `/html/body/div[1]/div/main/div/div[2]/div/div/section[2]/div[1]/div[2]/div[1]/div`,
-    TRENDING_CONCERT_RIGHT_ARROW_XPATH : `//*[@id="__next"]/div/main/div/div[2]/div/div/section[2]/div[1]/div[2]/div[2]`,
 
     // Wait times
     WAIT_TIME_VERY_LONG: 60000, // For operations that might take a while
