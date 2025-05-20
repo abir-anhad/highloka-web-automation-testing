@@ -10,6 +10,7 @@ export class HomePage extends BasePage {
     heroJoinConcertsButton = By.xpath(APP_CONFIG.HOME_PAGE_HERO_JOIN_CONCERTS_BUTTON_XPATH);
     heroDiscoverArtistsButton = By.xpath(APP_CONFIG.HOME_PAGE_HERO_DISCOVER_ARTISTS_BUTTON_XPATH);
     section3JoinConcertsButton = By.xpath(APP_CONFIG.HOME_PAGE_SECTION3_JOIN_CONCERTS_BUTTON_XPATH);
+    trendingConcertLeftArrow = By.xpath(APP_CONFIG.TRENDING_CONCERT_LEFT_ARROW_XPATH);
 
     /**
      * @param {import('../core/BrowserManager.js').BrowserManager} driverActions
@@ -54,6 +55,15 @@ export class HomePage extends BasePage {
         this.logger.log("Attempting to click Section 3 'Join the Concerts' Button.");
         await this.click(this.section3JoinConcertsButton);
         this.logger.log("Clicked Section 3 'Join the Concerts' Button.");
+    }
+
+    /**
+     * Clicks the "Trending Concert Left Arrow" button in section 2.
+     */
+    async clickSection2TrendingConcertLeftArrow() {
+        this.logger.log("Attempting to click Section 2 'Trending Concert Left Arrow' Button.");
+        await this.click(this.trendingConcertLeftArrow);
+        this.logger.log("Clicked Section 2 'Trending Concert Left Arrow' Button.");
     }
 
     /**

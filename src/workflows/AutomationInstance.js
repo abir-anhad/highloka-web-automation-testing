@@ -6,6 +6,7 @@ import { ConcertPage } from '../pages/ConcertPage.js';
 import { APP_CONFIG } from '../config/appConfig.js';
 import { Logger } from '../utils/Logger.js';
 import { sleep, promptForOtp } from '../utils/helpers.js';
+import { HomePage } from '../pages/HomePage.js';
 
 export class AutomationInstance {
     /** @type {string} */
@@ -46,33 +47,10 @@ export class AutomationInstance {
             await this.browserManager.get(APP_CONFIG.INITIAL_APP_URL);
             await this.browserManager.maximizeWindow();
             this.logger.log(`Mapsd to ${APP_CONFIG.INITIAL_APP_URL}`);
-            
-            // Not working as of now
-            await this.loginPage.attemptSandboxLogin();
-            await this.loginPage.clickInitialButton();
-            
 
-            
-            // await this.loginPage.enterEmailAndSubmit(this.email);
-
-            // this.logger.log("Awaiting OTP input.");
-            // await sleep(2000);
-            // const otpValue = await promptForOtp(`****** [Instance ${this.instanceNumber} | ${this.email}]: Enter 6-digit OTP: `);
-
-            // await this.otpPage.enterOtp(otpValue);
-            // await this.otpPage.clickVerifyOtp();
-
-            // this.logger.log("OTP verified. Checking for subsequent form steps.");
-            // await sleep(3000);
-
-            // await this.profileSetupPage.enterName();
-            // await this.profileSetupPage.selectRadioOption();
-            // await this.profileSetupPage.enterDate();
-            // await this.profileSetupPage.uploadImage();
-
-            // await this.concertPage.navigateToConcertPage();
-            // await this.concertPage.clickGetTicketOrInitialEnter();
-            // await this.concertPage.clickFinalEnterConcert();
+            this.homePage.clickSection2TrendingConcertLeftArrow();
+            // Open Login Popup
+            // this.loadLoginPopup();
 
             this.logger.log("All interactive steps completed.");
 
@@ -91,10 +69,40 @@ export class AutomationInstance {
         }
     }
 
+    async loadLoginPopup() {
+        // Not working as of now
+        await this.loginPage.attemptSandboxLogin();
+        await this.loginPage.clickHeaderLoginButton();
+
+
+
+        await this.loginPage.enterEmailInPopupAndSubmit(this.email);
+
+        this.logger.log("Awaiting OTP input.");
+        await sleep(2000);
+        const otpValue = await promptForOtp(`****** [Instance ${this.instanceNumber} | ${this.email}]: Enter 6-digit OTP: `);
+
+        await this.otpPage.enterOtp(otpValue);
+        await this.otpPage.clickVerifyOtp();
+
+        this.logger.log("OTP verified. Checking for subsequent form steps.");
+        await sleep(3000);
+
+        await this.profileSetupPage.enterName();
+        await this.profileSetupPage.selectRadioOption();
+        await this.profileSetupPage.enterDate();
+        await this.profileSetupPage.uploadImage();
+
+        await this.concertPage.navigateToConcertPage();
+        await this.concertPage.clickGetTicketOrInitialEnter();
+        await this.concertPage.clickFinalEnterConcert();
+    }
+
     _initializePages() {
         this.loginPage = new LoginPage(this.browserManager, this.logger);
         this.otpPage = new OtpPage(this.browserManager, this.logger);
         this.profileSetupPage = new ProfileSetupPage(this.browserManager, this.logger);
         this.concertPage = new ConcertPage(this.browserManager, this.logger);
+        this.homePage = new HomePage(this.browserManager, this.logger);
     }
 }

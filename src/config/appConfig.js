@@ -2,7 +2,8 @@
 export const APP_CONFIG = {
     USER_PROFILE_DIR: "./my_chrome_session_profile", // Currently not actively used in BrowserManager unless uncommented
     EMAIL_ADDRESSES_TO_PROCESS: [ // Used by the original multi-instance script, not directly by testHomePage.js
-        "abirxive@gmail.com",
+        // "abirxive@gmail.com",
+        "loka41@yopmail.com"
     ],
     INITIAL_APP_URL: "https://test.highloka.com/", // ** IMPORTANT: Set to your app's URL **
 
@@ -23,7 +24,8 @@ export const APP_CONFIG = {
 
     // OTP Flow specific (if the above popup leads to this, or if triggered differently)
     OTP_FIELD_NAME_PREFIX: "otpInput",
-    VERIFY_OTP_BUTTON_XPATH: "//div[contains(@class, 'actionButtonVerifyOtp')]/span[normalize-space()='Verify OTP']/ancestor::div[1]",
+    // VERIFY_OTP_BUTTON_XPATH: "//div[contains(@class, 'actionButtonVerifyOtp')]/span[normalize-space()='Verify OTP']/ancestor::div[1]",
+    VERIFY_OTP_BUTTON_XPATH: `//*[@id="__next"]/div/div/div[2]/div/div/div[2]/div[2]/div/div[2]/form/button`,
 
     // Home Page (Pre-Login) XPaths - As provided by user
     HOME_PAGE_HEADER_HOME_BUTTON_XPATH: "/html/body/div/div/div/nav/div[2]/div/a[1]",
@@ -48,6 +50,11 @@ export const APP_CONFIG = {
     CONCERT_REDIRECT_URL: "https://www.highloka.com/concerts/foodforsoul",
     GET_TICKET_OR_FIRST_ENTER_CONCERT_XPATH: "/html/body/div/div/main/section[1]/div/div[1]/div[2]/div[6]/div/div/span",
     FINAL_ENTER_CONCERT_XPATH: "/html/body/div/div/main/div/section/div/div/div[2]/div/div[3]/a/div/span",
+
+    // Trending Concert Slider Arror XPaths 
+    TRENDING_CONCERT_SLIDER_SECTION: `//*[@id="__next"]/div/main/div/div[2]/div/div/section[2]`,
+    TRENDING_CONCERT_LEFT_ARROW_XPATH : `/html/body/div[1]/div/main/div/div[2]/div/div/section[2]/div[1]/div[2]/div[1]/div`,
+    TRENDING_CONCERT_RIGHT_ARROW_XPATH : `//*[@id="__next"]/div/main/div/div[2]/div/div/section[2]/div[1]/div[2]/div[2]`,
 
     // Wait times
     WAIT_TIME_VERY_LONG: 60000, // For operations that might take a while

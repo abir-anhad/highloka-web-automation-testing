@@ -156,6 +156,7 @@ export class LoginPage extends BasePage {
         await this.click(button);
         this.logger.log("Clicked header login button.");
     }
+    
 
     /**
      * Enters email into the main login popup and clicks its submit button.
