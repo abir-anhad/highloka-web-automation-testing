@@ -5,7 +5,9 @@ export const APP_CONFIG = {
         // "abirxive@gmail.com",
         "loka41@yopmail.com"
     ],
+    //INITIAL_APP_URL: "https://user:testuser@test.highloka.com/",
     INITIAL_APP_URL: "https://test.highloka.com/", // ** IMPORTANT: Set to your app's URL **
+    //INITIAL_APP_URL:"https://www.highloka.com/",
 
     // Test Sandbox (if applicable)
     TEST_SANDBOX_USERNAME_XPATH: "//input[@id='sandbox_username_id']", // Replace if different or remove if not applicable
