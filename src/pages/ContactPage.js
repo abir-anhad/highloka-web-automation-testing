@@ -16,8 +16,12 @@ export class ContactPage {
       fullNameInput:'//*[@id="loginProfileInputName"]',
       emailInput: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[2]/input',
       mobileInput: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[3]/input',
+      messegeInput:'/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[5]/textarea',
       requestTypeDropdown: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[4]',
       requestTypeOptionAudience: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[4]/div/div[1]',
+      requestTypeOptionArtist: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[4]/div/div[2]',
+      requestTypeOptionVendor: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[4]/div/div[3]',
+      requestTypeOptionOther: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[4]/div/div[4]',
       submitButton: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[6]/button',
 
       // Example validation error containers (update as needed)
@@ -80,14 +84,20 @@ async fillFullName(name) {
     this.logger.log(`Filled Mobile with: ${mobile}`);
   }
 
+  // Fill messege field
+  async fillMessege(messege) {
+    const el = await this.findElement(this.locators.messegeInput);
+    await el.clear();
+    await el.sendKeys(messege);
+    this.logger.log(`Filled Messge with: ${messege}`);
+  }
+
   // Select Request Type dropdown option (assuming "Audience" is a valid option)
   async selectRequestTypeAudience() {
-    const dropdown = await this.findElement(this.locators.requestTypeDropdown);
-    await dropdown.click();
-    const option = await this.findElement(this.locators.requestTypeOptionAudience);
-    await option.click();
+    const audienceRadioButton = await this.findElement(this.locators.requestTypeOptionArtist);
+    await audienceRadioButton.click();
     this.logger.log('Selected Request Type: Audience');
-  }
+}
 
   // Clear all fields
   async clearAllFields() {
@@ -104,7 +114,7 @@ async fillFullName(name) {
     await this.clearFieldById(id1);
     await this.clearFieldById(id2);
     await this.clearField(id3);
-    // For dropdown, you can reset by clicking and selecting a blank option if applicable
+    
     this.logger.log('Cleared all form fields.');
   }
 
@@ -112,6 +122,7 @@ async fillFullName(name) {
   async fillValidOtherFields() {
     await this.fillFullName('Valid User');
     await this.fillMobile('9876543210');
+    await this.fillMessege('9876543210');
     await this.selectRequestTypeAudience();
     this.logger.log('Filled valid other fields.');
   }
@@ -120,6 +131,7 @@ async fillFullName(name) {
   async fillValidOtherFieldsExceptMobile() {
     await this.fillFullName('Valid User');
     await this.fillEmail('validuser@example.com');
+    await this.fillMessege('9876543210');
     await this.selectRequestTypeAudience();
     this.logger.log('Filled valid other fields except mobile.');
   }
@@ -129,6 +141,7 @@ async fillFullName(name) {
     await this.fillFullName('Valid User');
     await this.fillEmail('validuser@example.com');
     await this.fillMobile('9876543210');
+    await this.fillMessege('9876543210');
     this.logger.log('Filled valid fields except request type.');
   }
 
@@ -137,6 +150,7 @@ async fillFullName(name) {
     await this.fillFullName('Valid User');
     await this.fillEmail('validuser@example.com');
     await this.fillMobile('9876543210');
+    await this.fillMessege('Testing..1,2,3');
     await this.selectRequestTypeAudience();
     this.logger.log('Filled all valid fields.');
   }
@@ -276,7 +290,7 @@ async fillFullName(name) {
 // 1. Submit form blank and expect all required errors
 async testBlankSubmission() {
 this.logger.log('Running testBlankSubmission...');
-await this.clearAllFieldbs();
+await this.clearAllFields();
 await this.submitForm();
 
 const allErrorsVisible = await this.areAllRequiredErrorsVisible();
@@ -340,6 +354,7 @@ const hugeString = 'a'.repeat(10000); // 10k chars, adjust based on app limits
 await this.fillFullName(hugeString);
 await this.fillEmail(`${hugeString}@example.com`);
 await this.fillMobile('9876543210');
+await this.fillMessege('Testing..1..2..3')
 await this.selectRequestTypeAudience();
 await this.submitForm();
 
