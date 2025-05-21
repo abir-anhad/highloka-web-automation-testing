@@ -83,6 +83,10 @@ export class LoginPage extends BasePage {
     loginPopupEmailInput = By.xpath(APP_CONFIG.APP_POPUP_EMAIL_INPUT_XPATH); // Your existing XPath for the email field in the popup
     loginPopupSubmitButton = By.xpath(APP_CONFIG.APP_POPUP_SUBMIT_BUTTON_XPATH); // Your existing XPath for the submit button in the popup
     loginPopupCloseButton = By.xpath(APP_CONFIG.APP_POPUP_CLOSE_BUTTON_XPATH);
+    whatIsHighlokaLoginCloseButton = By.xpath(APP_CONFIG.WHAT_IS_HIGHLOKA_SEC_LOGIN_CLOSE_BUTTON_XPATH);
+    noMoreFomoLoginCloseButton = By.xpath(APP_CONFIG.NO_MORE_FOMO_SECTION3_LOGIN_CLOSE_BUTTON_XPATH);
+    moreIntimateLoginCloseButton = By.xpath(APP_CONFIG.MORE_INTIMATE_SECTION5_LOGIN_CLOSE_BUTTON_XPATH);
+    joinTheMovementLoginCloseButton = By.xpath(APP_CONFIG.EXPERIENCE_BEUTIFUL_SECTION7_LOGIN_CLOSE_BUTTON_XPATH);
 
     // Header Login Button (your original initial_button_xpath, now INITIAL_LOGIN_BUTTON_XPATH in appConfig)
     headerLoginButton = By.xpath(APP_CONFIG.INITIAL_LOGIN_BUTTON_XPATH);
@@ -153,6 +157,36 @@ export class LoginPage extends BasePage {
         await this.click(button);
         this.logger.log("Successfully closed login popup.");
     }
+
+    async whatIsHighlokaLoginClosePopup() {
+        this.logger.log("Locating login popup close button.");
+        const button = await this.waitForElementClickable(this.whatIsHighlokaLoginCloseButton, APP_CONFIG.WAIT_TIME_MEDIUM);
+        await this.click(button);
+        this.logger.log("Successfully closed login popup.");
+    }
+
+    async noMoreFomoLoginClosePopup() {
+        this.logger.log("Locating login popup close button.");
+        const button = await this.waitForElementClickable(this.noMoreFomoLoginCloseButton, APP_CONFIG.WAIT_TIME_MEDIUM);
+        await this.click(button);
+        this.logger.log("Successfully closed login popup.");
+    }
+
+    async moreIntimateLoginClosePopup() {
+        this.logger.log("Locating login popup close button.");
+        const button = await this.waitForElementClickable(this.moreIntimateLoginCloseButton, APP_CONFIG.WAIT_TIME_MEDIUM);
+        await this.click(button);
+        this.logger.log("Successfully closed login popup.");
+    }
+    
+    async joinTheMovementLoginClosePopup() {
+        this.logger.log("Locating login popup close button.");
+        const button = await this.waitForElementClickable(this.joinTheMovementLoginCloseButton, APP_CONFIG.WAIT_TIME_MEDIUM);
+        await this.click(button);
+        this.logger.log("Successfully closed login popup.");
+    }
+    
+    
 
     /**
      * Clicks the main login button usually found in the page header.

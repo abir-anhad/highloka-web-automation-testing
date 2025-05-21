@@ -14,12 +14,33 @@ export class HomePage extends BasePage {
     leftArrowOnHomePage = By.xpath(APP_CONFIG.HOME_PAGE_LEFT_ARROW);
     rightArrowOnHomePage = By.xpath(APP_CONFIG.HOME_PAGE_RIGHT_ARROW);
     trendingConcertItem = By.xpath(APP_CONFIG.TRENDING_CONCERT_ITEM_XPATH);
-
+    whatIsHighlokaJoinConcertButton = By.xpath(APP_CONFIG.WHAT_IS_HIGHLOKA_SEC_JOIN_CONCERT_BUTTON_XPATH);
+    section4NoMoreFomoJoinTheExperience = By.xpath(APP_CONFIG.NO_MORE_FOMO_SECTION3_JOIN_THE_EXPERIENCE_BUTTON_XPATH);
+    section5MoreIntimateJoinTheExperience = By.xpath(APP_CONFIG.MORE_INTIMATE_SECTION5_BUTTON_XPATH);
+    experienceBeutifulJoinTheMovementButton = By.xpath(APP_CONFIG.EXPERIENCE_BEUTIFUL_SECTION7_JOIN_THE_MOVEMENT_BUTTON_XPATH);
+    homePageScrollToTopButton = By.xpath(APP_CONFIG.HOME_PAGE_SCROLL_TO_TOP_BUTTON_XPATH);
+    
 
 
     // Scroll target locators
     section1ToScrollTo = By.xpath(APP_CONFIG.HOME_PAGE_SECTION1_TO_SCROLL_XPATH);
     section2ToScrollTo = By.xpath(APP_CONFIG.HOME_PAGE_SECTION2_TO_SCROLL_XPATH);
+    section3WhatIsHighlokaScrollTo = By.xpath(APP_CONFIG.HOME_PAGE_SECTION3_TO_SCROLL_XPATH);
+    section3WhatIsHighlokaScrollToJoinConcertButton = By.xpath(APP_CONFIG.WHAT_IS_HIGHLOKA_SEC_JOIN_CONCERT_BUTTON_XPATH);
+    section4NoMoreFomoScrollToTop = By.xpath(APP_CONFIG.NO_MORE_FOMO_SECTION3_TOP_SCROLL_XPATH);
+    section4NoMoreFomoScrollToMiddle = By.xpath(APP_CONFIG.NO_MORE_FOMO_SECTION3_MIDDLE_SCROLL_XPATH);
+    section4NoMoreFomoScrollToThirdDiv = By.xpath(APP_CONFIG.NO_MORE_FOMO_SECTION3_THIRD_DIV_SCROLL_XPATH);
+    section4NoMoreFomoScrollToBottomDiv = By.xpath(APP_CONFIG.NO_MORE_FOMO_SECTION3_BOTTOM_DIV_SCROLL_XPATH);
+    section4NoMoreFomoScrollToJoinTheExperience = By.xpath(APP_CONFIG.NO_MORE_FOMO_SECTION3_JOIN_THE_EXPERIENCE_BUTTON_XPATH);
+    section5MoreIntimateScrollTo = By.xpath(APP_CONFIG.MORE_INTIMATE_SECTION5_TOP_SCROLL_XPATH);
+    section5MoreIntimateScrollToConnectText = By.xpath(APP_CONFIG.MORE_INTIMATE_SECTION5_CONNECT_TEXT_XPATH);
+    section6HowItWorksScrollTo = By.xpath(APP_CONFIG.HOW_IT_WORKS_SECTION6_SCROLL_XPATH);
+    section7ExperienceBeutifulScrollTo = By.xpath(APP_CONFIG.EXPERIENCE_BEUTIFUL_SECTION7_SCROLL_XPATH);
+    homePageScrollToTopSection1 = By.xpath(APP_CONFIG.HOME_PAGE_SCROLL_TO_TOP_SECTION1_XPATH);
+
+
+
+
 
 
     /**
@@ -108,16 +129,130 @@ export class HomePage extends BasePage {
             await this.click(this.leftArrowOnHomePage);
             this.logger.log("Clicked Left Arrow.");
         }
-
     }
+
+    /**
+    * Scrolls to Section 3 and then clicks the Join The Concert button.
+    */
+    async whatIsHighlokaScrollToSection3() {
+        this.logger.log("Attempting to scroll to Section 3 before clicking Join The Concert button.");
+        await this.scrollToElement(this.section3WhatIsHighlokaScrollTo, "Section 3");
+        await this.scrollToElement(this.section3WhatIsHighlokaScrollToJoinConcertButton, "Section 3 button");
+        this.logger.log("Attempting to click Join The Concert button.");
+    }
+
+    /**
+    * Scrolls to Section 4 and then clicks the Join The Experience button.
+    */
+    async noMoreFomoScrollToMiddleSection4() {
+        this.logger.log("Attempting to scroll to Section 4 before clicking Join The Experience button.");
+        await this.scrollToElement(this.section4NoMoreFomoScrollToTop, "Section 4");
+        await sleep(500);
+        await this.scrollToElement(this.section4NoMoreFomoScrollToMiddle, "Section 4");
+        await sleep(1000);
+        await this.scrollToElement(this.section4NoMoreFomoScrollToThirdDiv, "Section 4");
+        await sleep(1000);
+        await this.scrollToElement(this.section4NoMoreFomoScrollToBottomDiv, "Section 4");
+        await sleep(1000);
+        await this.scrollToElement(this.section4NoMoreFomoScrollToJoinTheExperience, "Section 4");
+        this.logger.log("Attempting to click Join The Experience button.");
+    }
+
+    /**
+    * Scrolls to Section 5 and then clicks the Join The Experience button.
+    */
+    async moreIntimateScrollToSection5() {
+        this.logger.log("Attempting to scroll to Section 5 before clicking Join The Experience button.");
+        await this.scrollToElement(this.section5MoreIntimateScrollTo, "Section 5");
+        await sleep(2000);
+        await this.click(this.section5MoreIntimateJoinTheExperience);
+        this.logger.log("Attempting to click Join The Experience button.");
+    }
+
+    /**
+    * Scrolls to Section 5 and then clicks the Join The Experience button.
+    */
+    async moreIntimateScrollToSection5ConnectText() {
+        this.logger.log("Attempting to scroll to Section 5 before clicking Join The Experience button.");
+        await this.scrollToElement(this.section5MoreIntimateScrollToConnectText, "Section 5");
+        await sleep(2000);
+        // await this.click(this.section5MoreIntimateJoinTheExperience);
+        this.logger.log("Attempting to click Join The Experience button.");
+    }
+
+    /**
+    * Section 6 Scroll.
+    */
+    async howItWorksScrollToSection6() {
+        this.logger.log("Attempting to scroll to Section 6.");
+        await this.scrollToElement(this.section6HowItWorksScrollTo, "Section 6");
+        this.logger.log("Next to Section 7.");
+    }
+
+    /**
+        * Section 7 Scroll.
+        */
+    async experienceBeutifulScrollToSection7() {
+        this.logger.log("Attempting to scroll to Section 7.");
+        await this.scrollToElement(this.section7ExperienceBeutifulScrollTo, "Section 7");
+        this.logger.log("Next to Join The Movement Button click.");
+    }
+
+    /**
+        * Section 1 Scroll.
+        */
+    async homePageScrollToTopSection1Text() {
+        this.logger.log("Attempting to scroll to Section 1.");
+        await this.scrollToElement(this.homePageScrollToTopSection1, "Section 7");
+        this.logger.log("End Home Page.");
+    }
+
 
     /**
     * After clicks the Left Arrow to Section 2 and then click the Concert.
     */
     async clickTrendingConcert() {
+        this.logger.log("Attempting to click  'Trending Concert Item'.");
         await this.click(this.trendingConcertItem);
-        this.logger.log("Clicked Trending Concert Item.");        
+        this.logger.log("Clicked Trending Concert Item.");
     }
+
+    /**
+     * Clicks the What Is Highloka 'Join the Concerts' Button.
+     */
+    async clickWhatIsHighlokaJoinConcertButtonContext() {
+        this.logger.log("Attempting to click What Is Highloka 'Join the Concerts' Button.");
+        await this.click(this.whatIsHighlokaJoinConcertButton);
+        this.logger.log("Clicked What Is Highloka 'Join the Concerts' Button.");
+    }
+
+    /**
+    * Section 4 and then click the Join The Experience.
+    */
+    async clickJoinTheExperienceButton() {
+        this.logger.log("Attempting to click  'Join The Experience'.");
+        await this.click(this.section4NoMoreFomoJoinTheExperience);
+        this.logger.log("Clicked Join The Experience.");
+    }
+
+    /**
+        * Section 5 and then click the Join The Movement.
+        */
+    async clickJoinTheMovementButton() {
+        this.logger.log("Attempting to click  'Join The Movement' button.");
+        await this.click(this.experienceBeutifulJoinTheMovementButton);
+        this.logger.log("Clicked Join The Movement.");
+    }
+
+    /**
+        * Home Page ScrollToTop Button Click
+        */
+    async homePageScrollToTopButtonClick() {
+        this.logger.log("Attempting to click  'ScrollToTop' button.");
+        await this.click(this.homePageScrollToTopButton);
+        this.logger.log("Clicked ScrollToTop.");
+    }
+
 
 
 

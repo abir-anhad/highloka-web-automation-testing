@@ -5,6 +5,7 @@ import { HomePage } from './src/pages/HomePage.js';
 import { LoginPage } from './src/pages/LoginPage.js';
 import { APP_CONFIG } from './src/config/appConfig.js';
 import { sleep } from './src/utils/helpers.js';
+import { HomeMenuClicking } from './src/utils/menu.js';
 
 async function testJoinConcertShowsLoginPopup() {
     const logger = new Logger('JoinConcertLoginPopupTest');
@@ -20,6 +21,7 @@ async function testJoinConcertShowsLoginPopup() {
     try {
         await browserManager.buildDriver();
         await browserManager.maximizeWindow();
+
 
         loginPage = new LoginPage(browserManager, logger);
 
@@ -60,12 +62,43 @@ async function testJoinConcertShowsLoginPopup() {
         if (await loginPage.isMainLoginPopupVisible()) {
             logger.log("PASS: Main login popup with its email input and submit button is visible after clicking 'Join Concert'.");
             await loginPage.closeLoginPopUp();
+            await sleep(4000);
             await homePage.clickLeftRightArrowsScrollToSection2();
             await sleep(2000);
             await homePage.clickTrendingConcert();
             await sleep(2000);
-            browserManager.driver.navigate().back();
+            // browserManager.driver.navigate().back();
+            await homePage.clickHeaderHomeButtonInHeroContext();
             await sleep(2000);
+            await homePage.whatIsHighlokaScrollToSection3();
+            await sleep(2000);
+            await homePage.clickWhatIsHighlokaJoinConcertButtonContext();
+            await sleep(2000);
+            await loginPage.whatIsHighlokaLoginClosePopup();
+            await sleep(2000);
+            await homePage.noMoreFomoScrollToMiddleSection4();
+            await sleep(1000);
+            await homePage.clickJoinTheExperienceButton();
+            await sleep(2000);
+            await loginPage.noMoreFomoLoginClosePopup();
+            await sleep(2000);
+            await homePage.moreIntimateScrollToSection5();
+            await sleep(2000);
+            await loginPage.moreIntimateLoginClosePopup();
+            await sleep(2000);
+            await homePage.moreIntimateScrollToSection5ConnectText();
+            await sleep(2000);
+            await homePage.howItWorksScrollToSection6();
+            await sleep(2000);
+            await homePage.experienceBeutifulScrollToSection7();
+            await sleep(2000);
+            await homePage.clickJoinTheMovementButton();
+            await sleep(2000);
+            await loginPage.joinTheMovementLoginClosePopup();
+            await sleep(2000);
+            await homePage.homePageScrollToTopButtonClick();
+            logger.log("Clicking the Header Home button...");
+            await homePage.homePageScrollToTopSection1Text();
             testPassed = true;
         } else {
             logger.error("FAIL: Main login popup (with shared email input & submit) was NOT visible after clicking 'Join Concert'. " +
