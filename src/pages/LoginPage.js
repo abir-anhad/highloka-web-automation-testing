@@ -82,6 +82,7 @@ export class LoginPage extends BasePage {
     loginPopupContainer = By.xpath(APP_CONFIG.LOGIN_POPUP_CONTAINER_XPATH); // ** Uses LOGIN_POPUP_CONTAINER_XPATH from appConfig **
     loginPopupEmailInput = By.xpath(APP_CONFIG.APP_POPUP_EMAIL_INPUT_XPATH); // Your existing XPath for the email field in the popup
     loginPopupSubmitButton = By.xpath(APP_CONFIG.APP_POPUP_SUBMIT_BUTTON_XPATH); // Your existing XPath for the submit button in the popup
+    loginPopupCloseButton = By.xpath(APP_CONFIG.APP_POPUP_CLOSE_BUTTON_XPATH);
 
     // Header Login Button (your original initial_button_xpath, now INITIAL_LOGIN_BUTTON_XPATH in appConfig)
     headerLoginButton = By.xpath(APP_CONFIG.INITIAL_LOGIN_BUTTON_XPATH);
@@ -146,6 +147,13 @@ export class LoginPage extends BasePage {
         }
     }
 
+    async closeLoginPopUp() {
+        this.logger.log("Locating login popup close button.");
+        const button = await this.waitForElementClickable(this.loginPopupCloseButton, APP_CONFIG.WAIT_TIME_MEDIUM);
+        await this.click(button);
+        this.logger.log("Successfully closed login popup.");
+    }
+
     /**
      * Clicks the main login button usually found in the page header.
      * (This corresponds to your original `initial_button_xpath`)
@@ -156,6 +164,7 @@ export class LoginPage extends BasePage {
         await this.click(button);
         this.logger.log("Clicked header login button.");
     }
+    
 
     /**
      * Enters email into the main login popup and clicks its submit button.
