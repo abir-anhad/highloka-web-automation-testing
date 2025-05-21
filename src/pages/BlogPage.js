@@ -9,14 +9,7 @@ export class BlogPage {
     };
   }
 
-//   async scrollDownThenUp() {
-//     this.logger.log('Testing scroll down then up...');
-//     await this.driver.executeScript('window.scrollTo(0, document.body.scrollHeight)');
-//     await sleep(2000); // Pause to simulate user time at bottom
-//     await this.driver.executeScript('window.scrollTo(0, 0)');
-//     await sleep(2000);
-//     this.logger.log('Scroll down and up completed');
-//   }
+
 async scrollDownThenUp() {
   this.logger.log('Testing scroll down then up on scrollable div...');
 
