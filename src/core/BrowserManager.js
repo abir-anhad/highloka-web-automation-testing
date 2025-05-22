@@ -2,7 +2,7 @@
 import { Builder, By, until } from 'selenium-webdriver'; // Removed Key as it's not used here directly
 import chrome from 'selenium-webdriver/chrome.js';
 import { APP_CONFIG } from '../config/appConfig.js';
-// import path from 'path'; // If using profile dir
+import path from 'path'; // If using profile dir
 
 export class BrowserManager {
     /** @type {import('selenium-webdriver').WebDriver} */
@@ -37,11 +37,11 @@ export class BrowserManager {
         chromeOptions.set('goog:chromeOptions', googChromeOpts);
 
         // For profile (if you enable it later):
-        // const profilePath = path.resolve(APP_CONFIG.USER_PROFILE_DIR);
-        // if (APP_CONFIG.USER_PROFILE_DIR) {
-        //    // Profile path should also be an argument
-        //    chromeOptions.addArguments(`user-data-dir=${profilePath}`);
-        // }
+        const profilePath = path.resolve(APP_CONFIG.USER_PROFILE_DIR);
+        if (APP_CONFIG.USER_PROFILE_DIR) {
+           // Profile path should also be an argument
+           chromeOptions.addArguments(`user-data-dir=${profilePath}`);
+        }
 
         this.driver = await new Builder()
             .forBrowser('chrome')
