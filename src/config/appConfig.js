@@ -105,5 +105,8 @@ export const APP_CONFIG = {
     WAIT_TIME_SHORT: 10000,     // For quick checks or elements expected to be present soon
     WAIT_TIME_VERY_SHORT: 5000, // For very quick checks, like the sandbox login presence
     PAGE_LOAD_TIMEOUT: 300000,   // Max time for page to load
-    SCRIPT_TIMEOUT: 30000       // Max time for async script
+    SCRIPT_TIMEOUT: 30000 ,      // Max time for async script
+
+    //Test Email
+    TEST_EMAIL:"yodat48247@dlbazi.com"
 };
