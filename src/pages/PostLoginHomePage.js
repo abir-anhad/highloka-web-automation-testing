@@ -276,6 +276,32 @@ export class PostLoginHomePage {
     this.logger.log("All redirection tests passed successfully.");
   }
 
+  //Log Out Test ------------------------------------------------------------
+
+  async logoutAndVerify() {
+    const menuButtonXPath = '/html/body/div/div/div/nav/div[4]/div';
+    const logoutButtonXPath = '/html/body/div/div/div/div[1]/div/div[1]/div[3]/p';
+    const joinButtonXPath = '/html/body/div/div/div/nav/div[3]/div/button';
+
+    this.logger.log('Opening menu to perform logout...');
+    await this.browserManager.driver.findElement({ xpath: menuButtonXPath }).click();
+    await sleep(1500);
+
+    this.logger.log('Clicking Logout...');
+    await this.browserManager.driver.findElement({ xpath: logoutButtonXPath }).click();
+    await sleep(2500);
+
+    this.logger.log('Verifying logout by checking Join The Cult button...');
+    const joinButton = await this.browserManager.driver.findElement({ xpath: joinButtonXPath });
+
+    if (joinButton) {
+      this.logger.log('Logout successful. "Join The Cult" button found.');
+    } else {
+      throw new Error(' Logout failed. "Join The Cult" button not found.');
+    }
+  }
+
+
 
 
 

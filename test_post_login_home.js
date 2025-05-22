@@ -34,7 +34,8 @@ async function runHomeProfileEditTests() {
       homePage.returnToHomePage,
       homePage.verifyMyEventsLoaded,
       homePage.openTopRightMenuAndVerifyOptions,
-      homePage.testMenuRedirections
+      homePage.testMenuRedirections,
+      homePage.logoutAndVerify
     ];
 
     for (const testCase of testCases) {
