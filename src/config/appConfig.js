@@ -20,6 +20,9 @@ export const APP_CONFIG = {
 
     LOGIN_POPUP_CONTAINER_XPATH: "/html/body/div/div/div/div[2]/div/div/div[2]", 
 
+    // Menu XPath
+    HOME_MENU_XPATH : "/html/body/div/div/div/nav/div[2]/div/a[1]",
+
     // These are your existing XPaths for the email and submit button within that popup
     APP_POPUP_EMAIL_INPUT_XPATH: "/html/body/div[1]/div/div/div[2]/div/div/div[2]/div[2]/div/div[2]/form/input",
     APP_POPUP_SUBMIT_BUTTON_XPATH: "/html/body/div[1]/div/div/div[2]/div/div/div[2]/div[2]/div/div[2]/form/div/button",
@@ -38,14 +41,42 @@ export const APP_CONFIG = {
     HOME_PAGE_HERO_DISCOVER_ARTISTS_BUTTON_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[1]/div/div/button[1]",
     HOME_PAGE_HERO_JOIN_CONCERTS_BUTTON_XPATH: "/html/body/div[1]/div/main/div/div[2]/div/div/section[1]/div/div/button[2]",
     
-    // section 2
+    // section 2 Trending Concert
     HOME_PAGE_SECTION2_TO_SCROLL_XPATH: "/html/body/div[1]/div/main/div/div[2]/div/div/section[2]", 
     HOME_PAGE_LEFT_ARROW: "/html/body/div[1]/div/main/div/div[2]/div/div/section[2]/div[1]/div[2]/div[1]/div",
     HOME_PAGE_RIGHT_ARROW: "/html/body/div[1]/div/main/div/div[2]/div/div/section[2]/div[1]/div[2]/div[2]",
     TRENDING_CONCERT_ITEM_XPATH: `/html/body/div/div/main/div/div[2]/div/div/section[2]/div[2]/div/div[1]`,
    
-    // section 3
+    // section 3 What is Highloka
     HOME_PAGE_SECTION3_TO_SCROLL_XPATH: "/html/body/div[1]/div/main/div/div[2]/div/div/section[3]", 
+    WHAT_IS_HIGHLOKA_SEC_JOIN_CONCERT_BUTTON_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[3]/div/button",
+    WHAT_IS_HIGHLOKA_SEC_LOGIN_CLOSE_BUTTON_XPATH: "/html/body/div/div/div/div[3]/div/div/div[3]/div",
+
+    // Section 4 No More FOMO
+    NO_MORE_FOMO_SECTION3_TOP_SCROLL_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[4]/div[2]/div[1]",
+    NO_MORE_FOMO_SECTION3_MIDDLE_SCROLL_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[4]/div[2]/div[2]/div[2]/div/p",
+    NO_MORE_FOMO_SECTION3_THIRD_DIV_SCROLL_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[4]/div[2]/div[3]/div[2]/div/p[1]",
+    NO_MORE_FOMO_SECTION3_BOTTOM_DIV_SCROLL_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[4]/div[2]/div[4]/div[2]/div/p",
+    NO_MORE_FOMO_SECTION3_JOIN_THE_EXPERIENCE_BUTTON_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[4]/div[3]",
+    NO_MORE_FOMO_SECTION3_LOGIN_CLOSE_BUTTON_XPATH: "/html/body/div/div/div/div[3]/div/div/div[3]/div",
+    
+    // Section 5 More Intimate
+    MORE_INTIMATE_SECTION5_TOP_SCROLL_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[5]/div/div[1]/p",
+    MORE_INTIMATE_SECTION5_BUTTON_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[5]/div/div[1]/button",
+    MORE_INTIMATE_SECTION5_LOGIN_CLOSE_BUTTON_XPATH: "/html/body/div/div/div/div[3]/div/div/div[3]/div",
+    MORE_INTIMATE_SECTION5_CONNECT_TEXT_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[5]/div/div[2]/div[5]/div[2]/h3",
+
+    // Section 6 How It Works
+    HOW_IT_WORKS_SECTION6_SCROLL_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[6]/div/div[1]/h2",
+
+    // Section 7 Experience Beutiful
+    EXPERIENCE_BEUTIFUL_SECTION7_SCROLL_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[7]/div/h2[1]",
+    EXPERIENCE_BEUTIFUL_SECTION7_JOIN_THE_MOVEMENT_BUTTON_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[7]/div/button",
+    EXPERIENCE_BEUTIFUL_SECTION7_LOGIN_CLOSE_BUTTON_XPATH: "/html/body/div/div/div/div[3]/div/div/div[3]/div",
+
+    // Home Page ScrollToTop button
+    HOME_PAGE_SCROLL_TO_TOP_BUTTON_XPATH: "/html/body/div/div/div/div[2]",
+    HOME_PAGE_SCROLL_TO_TOP_SECTION1_XPATH: "/html/body/div/div/main/div/div[2]/div/div/section[1]/div/h1",
 
 
     // Subsequent form steps XPaths (Original Full Flow - for reference from Python script)
