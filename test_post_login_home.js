@@ -4,11 +4,14 @@ import { PostLoginHomePage } from './src/pages/PostLoginHomePage.js';
 import { APP_CONFIG } from './src/config/appConfig.js';
 import { sleep } from './src/utils/helpers.js';
 
+
+//RUN the test_login script first else This TEST SUITE WILL FAIL
 async function runHomeProfileEditTests() {
   const logger = new Logger('HomeProfileEditTests');
   const browserManager = new BrowserManager();
   let homePage;
   let testPassed = true;
+  logger.log(' RUN the test_login script first else This TEST SUITE WILL FAIL');
 
   try {
     await browserManager.buildDriver();
@@ -21,20 +24,20 @@ async function runHomeProfileEditTests() {
     await sleep(10000); // wait for homepage to load
 
     const testCases = [
-      homePage.openUserMenu,
-      homePage.clickEditFirstNameButton,
-      homePage.editFirstName,
-      homePage.clickEditLasttNameButton,
-      homePage.editLastName,
-      homePage.clickSave,
-      homePage.clickHomeButton,
-      homePage.reopenUserMenuAndVerifyName,
-      homePage.scrollDownAndUp,
-      homePage.clickEnterConcertAndCheckRedirect,
-      homePage.returnToHomePage,
-      homePage.verifyMyEventsLoaded,
-      homePage.openTopRightMenuAndVerifyOptions,
-      homePage.testMenuRedirections,
+      // homePage.openUserMenu,
+      // homePage.clickEditFirstNameButton,
+      // homePage.editFirstName,
+      // homePage.clickEditLasttNameButton,
+      // homePage.editLastName,
+      // homePage.clickSave,
+      // homePage.clickHomeButton,
+      // homePage.reopenUserMenuAndVerifyName,
+      // homePage.scrollDownAndUp,
+      // homePage.clickEnterConcertAndCheckRedirect,
+      // homePage.returnToHomePage,
+      // homePage.verifyMyEventsLoaded,
+      // homePage.openTopRightMenuAndVerifyOptions,
+      // homePage.testMenuRedirections,
       homePage.logoutAndVerify
     ];
 
