@@ -4,9 +4,8 @@ import { PostLoginHomePage } from './src/pages/PostLoginHomePage.js';
 import { APP_CONFIG } from './src/config/appConfig.js';
 import { sleep } from './src/utils/helpers.js';
 
-
 //RUN the test_login script first else This TEST SUITE WILL FAIL
-async function runHomeProfileEditTests() {
+async function runConcertLobbyTests() {
   const logger = new Logger('HomeProfileEditTests');
   const browserManager = new BrowserManager();
   let homePage;
@@ -21,24 +20,10 @@ async function runHomeProfileEditTests() {
 
     logger.log(`Navigating to home page: ${APP_CONFIG.INITIAL_APP_URL}`);
     await browserManager.get(APP_CONFIG.INITIAL_APP_URL);
-    await sleep(10000); // wait for homepage to load
-
+    await sleep(10000);
     const testCases = [
-      homePage.openUserMenu,
-      homePage.clickEditFirstNameButton,
-      homePage.editFirstName,
-      homePage.clickEditLasttNameButton,
-      homePage.editLastName,
-      homePage.clickSave,
-      homePage.clickHomeButton,
-      homePage.reopenUserMenuAndVerifyName,
-      homePage.scrollDownAndUp,
       homePage.clickEnterConcertAndCheckRedirect,
-      homePage.returnToHomePage,
-      homePage.verifyMyEventsLoaded,
-      homePage.openTopRightMenuAndVerifyOptions,
-      homePage.testMenuRedirections,
-      homePage.logoutAndVerify
+      
     ];
 
     for (const testCase of testCases) {
@@ -61,4 +46,4 @@ async function runHomeProfileEditTests() {
   }
 }
 
-runHomeProfileEditTests();
+runConcertLobbyTests();
