@@ -3,7 +3,7 @@ import { Logger } from './src/utils/Logger.js';
 import { APP_CONFIG } from './src/config/appConfig.js';
 import { sleep } from './src/utils/helpers.js';
 
-const JOIN_THE_CULT_XPATH = '/html/body/div/div/div/nav/div[3]/div';
+const JOIN_THE_CULT_XPATH = '/html/body/div/div/div/nav/div[3]/div/button';
 const GOOGLE_BUTTON_XPATH = '/html/body/div/div/div/div[2]/div/div/div[2]/div[2]/div/div[3]/div';
 const EMAIL_INPUT_XPATH = '//*[@id="name"]';
 const SUBMIT_EMAIL_BUTTON_XPATH = '/html/body/div/div/div/div[2]/div/div/div[2]/div[2]/div/div[2]/form/div/button';

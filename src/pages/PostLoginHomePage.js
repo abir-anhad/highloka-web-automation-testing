@@ -82,7 +82,7 @@ export class PostLoginHomePage {
     const nameHeader = await this.browserManager.driver.findElement({ xpath: nameHeaderXPath });
     const actualName = await nameHeader.getText();
 
-    const expectedName = 'Souvik Test';
+    const expectedName = 'Loka 41'; // Souvik Test
     if (actualName !== expectedName) {
       throw new Error(`Name mismatch! Expected: "${expectedName}", Found: "${actualName}"`);
     }

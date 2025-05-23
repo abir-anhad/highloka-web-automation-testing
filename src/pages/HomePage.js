@@ -149,11 +149,11 @@ export class HomePage extends BasePage {
         await this.scrollToElement(this.section4NoMoreFomoScrollToTop, "Section 4");
         await sleep(500);
         await this.scrollToElement(this.section4NoMoreFomoScrollToMiddle, "Section 4");
-        await sleep(1000);
+        await sleep(2000);
         await this.scrollToElement(this.section4NoMoreFomoScrollToThirdDiv, "Section 4");
-        await sleep(1000);
+        await sleep(2000);
         await this.scrollToElement(this.section4NoMoreFomoScrollToBottomDiv, "Section 4");
-        await sleep(1000);
+        await sleep(2000);
         await this.scrollToElement(this.section4NoMoreFomoScrollToJoinTheExperience, "Section 4");
         this.logger.log("Attempting to click Join The Experience button.");
     }

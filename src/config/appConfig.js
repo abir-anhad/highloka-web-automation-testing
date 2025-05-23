@@ -98,6 +98,14 @@ export const APP_CONFIG = {
     GET_TICKET_OR_FIRST_ENTER_CONCERT_XPATH: "/html/body/div/div/main/section[1]/div/div[1]/div[2]/div[6]/div/div/span",
     FINAL_ENTER_CONCERT_XPATH: "/html/body/div/div/main/div/section/div/div/div[2]/div/div[3]/a/div/span",
 
+    POST_LOGIN_HOME_ACTIVE_CONCERT_FIRST_ITEM_XPATH: "/html/body/div/div/main/div[1]/div[2]/div[1]/div/div/div/div/div/div",
+    LOBBY_PAGE_ENTER_CONCERT_BUTTON_XPATH: "/html/body/div/div/main/div/section/div/div[1]/div[2]/div/div[2]/a",
+    CONCERT_ARENA_FIRST_REACTION_BUTTON_XPATH: "/html/body/div[1]/div/main/div/div[2]/div[2]/div/div[1]/div/div[1]/button",
+    CONCERT_ARENA_CHAT_INPUT_BOX_XPATH: "/html/body/div[1]/div/main/div/div[2]/div[1]/div[2]/div[4]/div/div[2]/div/form/input",
+    CONCERT_ARENA_CHAT_INPUT_SUBMIT_BUTTON_XPATH: "/html/body/div[1]/div/main/div/div[2]/div[1]/div[2]/div[4]/div/div[2]/div/form/div/button",
+    CONCERT_ARENA_NITRO_MODE_TOGGLE_BUTTON_XPATH: "/html/body/div[1]/div/main/div/div[2]/div[2]/div/div[2]/div[1]/div",
+
+
 
     // Wait times
     WAIT_TIME_VERY_LONG: 60000, // For operations that might take a while
@@ -108,5 +116,6 @@ export const APP_CONFIG = {
     SCRIPT_TIMEOUT: 30000 ,      // Max time for async script
 
     //Test Email
-    TEST_EMAIL:"yodat48247@dlbazi.com"
+    // TEST_EMAIL:"yodat48247@dlbazi.com" //souvik
+    TEST_EMAIL:"loka41@yopmail.com" //biswajit
 };
