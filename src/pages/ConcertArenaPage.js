@@ -80,7 +80,7 @@ export class ArenaPage extends BasePage {
   async arenaPageChatInputTyping() {
     this.logger.log("Attempting to Chat Input Box Send Text'.");
     let element = await this.findElement(this.arenaPageChatInputBox, APP_CONFIG.WAIT_TIME_SHORT);
-    await element.sendKeys("hi..");
+    await element.sendKeys("Hello Highloka..");
     await sleep(3000);
     this.logger.log("After Chat Input Box Send Text.");
   }
@@ -133,6 +133,9 @@ export class ArenaPage extends BasePage {
     if (chat.userId !== 'null null') {
       console.log(`User ID: ${chat.userId}`);
       console.log(`Message: ${chat.message}`);
+    }
+    if(chat.message == "Hello Highloka.."){
+      console.log(`Chat Message : Passed!`);
     }
   };
   getMessageSignature(userId, message) {

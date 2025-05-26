@@ -11,8 +11,10 @@ const VERIFY_OTP_BUTTON_XPATH = '/html/body/div/div/div/div[2]/div/div/div[2]/di
 
 async function runLoginAndProfileSaveTest() {
   const logger = new Logger('LoginProfileTest');
-  const browserManager = new BrowserManager();
   let testPassed = true;
+  let profilePathOne = `${APP_CONFIG.USER_PROFILE_DIR}_ChatObserver`;
+  let profilePathTwo = `${APP_CONFIG.USER_PROFILE_DIR}_ChatSender`;
+  const browserManager = new BrowserManager(profilePathTwo);
 
   try {
     await browserManager.buildDriver(); // This will use the profile if set in BrowserManager
