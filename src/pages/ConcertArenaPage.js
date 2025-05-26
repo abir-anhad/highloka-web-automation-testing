@@ -57,21 +57,21 @@ export class ArenaPage extends BasePage {
     // await actions.move({ origin: element }).press().perform(); //
     // await sleep(3000);
     // this.logger.log("Clicked Arena page First Reaction button.");
-  this.logger.log(`Attempting to press and hold Arena Page First Reaction Button for ${holdDuration}ms.`);
-        const element = await this.waitForElementClickable(this.arenaFirstReactionButton, APP_CONFIG.WAIT_TIME_SHORT);
-        
-        const actions = this.driverActions.driver.actions({async: true});
-        
-        await actions.move({origin: element}).press().perform();
-        this.logger.log("Mouse button pressed down on Arena page First Reaction button.");
-       
-        await sleep(holdDuration);
-        
-        // Release the mouse button
-        await actions.release().perform();
-        this.logger.log("Mouse button released on Arena page First Reaction button.");
-        
-        await sleep(1000); 
+    this.logger.log(`Attempting to press and hold Arena Page First Reaction Button for ${holdDuration}ms.`);
+    const element = await this.waitForElementClickable(this.arenaFirstReactionButton, APP_CONFIG.WAIT_TIME_SHORT);
+
+    const actions = this.driverActions.driver.actions({ async: true });
+
+    await actions.move({ origin: element }).press().perform();
+    this.logger.log("Mouse button pressed down on Arena page First Reaction button.");
+
+    await sleep(holdDuration);
+
+    // Release the mouse button
+    await actions.release().perform();
+    this.logger.log("Mouse button released on Arena page First Reaction button.");
+
+    await sleep(1000);
   }
 
   /**
@@ -122,6 +122,82 @@ export class ArenaPage extends BasePage {
     await this.driverActions.driver.navigate().to('https://test.highloka.com/home');
     await sleep(3000);
     this.logger.log('Returned to Home Page.');
+  }
+
+
+
+  handleNewChatMessage = (chat) => {
+    console.log(`NEW MESSAGE at ${new Date().toLocaleTimeString()}: `);
+
+    console.log('---');
+    if (chat.userId !== 'null null') {
+      console.log(`User ID: ${chat.userId}`);
+      console.log(`Message: ${chat.message}`);
+    }
+  };
+  getMessageSignature(userId, message) {
+    return `USER:${userId}---MSG:${message}`;
+  }
+  async observeNewChats(driver, newChatHandler, pollIntervalMs = 3000) {
+    const processedMessageSignatures = new Set();
+    let isObserving = true;
+
+    // populate existing messages 
+    // We still add them to processedMessageSignatures.
+
+    await this.fetchNewChatMessages(driver, processedMessageSignatures, newChatHandler);
+
+    const intervalId = setInterval(async () => {
+      if (!isObserving) return;
+      await this.fetchNewChatMessages(driver, processedMessageSignatures, newChatHandler);
+    }, pollIntervalMs);
+
+    return () => {
+      isObserving = false;
+      clearInterval(intervalId);
+      console.log("Chat observer stopped.");
+    };
+  }
+
+  async fetchNewChatMessages(driver, processedMessageSignatures, onNewChatCallback) {
+    try {
+      const chatMessageElements = await driver.findElements(By.css('div.chat-text-viewchat-text-view_styles_chat-text-view__fWR0W'));
+      let newMessagesFoundInThisPoll = false;
+
+      for (const messageElement of chatMessageElements) {
+        let userId = 'N/A';
+        let message = 'N/A';
+        let currentMessageSignature = '';
+
+        try {
+          const userIdElement = await messageElement.findElement(By.css('span.chat-text-view_styles_chatSenderName__fjqUw'));
+          userId = await userIdElement.getText();
+
+          const messageTextElement = await messageElement.findElement(By.css('span.chat-text-view_styles_chat-text-content__ymUhG'));
+          message = await messageTextElement.getText();
+
+          currentMessageSignature = this.getMessageSignature(userId, message);
+
+          if (!processedMessageSignatures.has(currentMessageSignature)) {
+            processedMessageSignatures.add(currentMessageSignature);
+            if (onNewChatCallback && typeof onNewChatCallback === 'function') {
+              onNewChatCallback({ userId, message });
+            }
+            newMessagesFoundInThisPoll = true;
+          }
+        } catch (e) {
+          // Ignore if a specific message element
+          // eta ignore korai valo
+          // console.warn("Could not fully parse.", e.message);
+        }
+      }
+
+    } catch (error) {
+      console.error("Error polling:", error);
+    }
+  }
+  async testObserveChat() {
+    await this.observeNewChats(this.driverActions.driver, this.handleNewChatMessage)
   }
 
 

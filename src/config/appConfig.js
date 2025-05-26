@@ -3,7 +3,8 @@ export const APP_CONFIG = {
     USER_PROFILE_DIR: "./my_chrome_session_profile", // Currently not actively used in BrowserManager unless uncommented
     EMAIL_ADDRESSES_TO_PROCESS: [ // Used by the original multi-instance script, not directly by testHomePage.js
         // "abirxive@gmail.com",
-        "loka41@yopmail.com"
+        "loka41@yopmail.com",
+        "loka42@yopmail.com"
     ],
     //INITIAL_APP_URL: "https://user:testuser@test.highloka.com/",
     INITIAL_APP_URL: "https://test.highloka.com/", // ** IMPORTANT: Set to your app's URL **

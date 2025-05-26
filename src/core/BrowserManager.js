@@ -8,7 +8,12 @@ export class BrowserManager {
     /** @type {import('selenium-webdriver').WebDriver} */
     driver;
 
-    constructor() {}
+     /** @type {string | null} */
+    profilePath; // Add this
+
+    constructor(profilePath = null) { 
+        this.profilePath = profilePath; // Store the path
+    }
 
     /**
      * @returns {Promise<import('selenium-webdriver').WebDriver>}
@@ -36,12 +41,22 @@ export class BrowserManager {
         // Set the modified/created googChromeOpts back onto the chromeOptions
         chromeOptions.set('goog:chromeOptions', googChromeOpts);
 
+
+
         // For profile (if you enable it later):
-        const profilePath = path.resolve(APP_CONFIG.USER_PROFILE_DIR);
-        if (APP_CONFIG.USER_PROFILE_DIR) {
-           // Profile path should also be an argument
-           chromeOptions.addArguments(`user-data-dir=${profilePath}`);
-        }
+        // const profilePath = path.resolve(APP_CONFIG.USER_PROFILE_DIR);
+        // if (APP_CONFIG.USER_PROFILE_DIR) {
+        //    // Profile path should also be an argument
+        //    chromeOptions.addArguments(`user-data-dir=${profilePath}`);
+        // }
+
+        // For profile (if you enable it later):
+        const activeProfilePath = this.profilePath || (APP_CONFIG.USER_PROFILE_DIR ? path.resolve(APP_CONFIG.USER_PROFILE_DIR) : null); //
+
+        if (activeProfilePath) { //
+            chromeOptions.addArguments(`user-data-dir=${activeProfilePath}`); //
+         }
+
 
         this.driver = await new Builder()
             .forBrowser('chrome')

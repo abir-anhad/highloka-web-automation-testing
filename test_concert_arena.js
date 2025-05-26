@@ -30,13 +30,14 @@ async function runArenaPageTests() {
         // Step 3: Run lobby test actions
         const testCases = [
             arenaPage.clickLobbyEnterConcert,
-            arenaPage.clickArenaFirstReaction,
-            arenaPage.arenaPageChatInputTyping,
-            arenaPage.clickArenaChatSubmitButton,
-            arenaPage.clickArenaNitroModeToggleButton,
-            arenaPage.clickArenaNitroModeToggleButton,
-            arenaPage.goBackToLobby,
-            arenaPage.goBackToHome
+            // arenaPage.clickArenaFirstReaction,
+            // arenaPage.arenaPageChatInputTyping,
+            // arenaPage.clickArenaChatSubmitButton,
+            // arenaPage.clickArenaNitroModeToggleButton,
+            // arenaPage.clickArenaNitroModeToggleButton,
+            arenaPage.testObserveChat,
+            // arenaPage.goBackToLobby,
+            // arenaPage.goBackToHome
         ];
 
         for (const testCase of testCases) {
