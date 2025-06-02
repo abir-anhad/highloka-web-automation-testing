@@ -1,3 +1,2 @@
-2025/05/26-17:09:40.390 5427 Reusing MANIFEST /home/biswajit/Documents/biswajit/eventsthal/highloka-web-automation-testing/my_chrome_session_profile_ChatSender/Default/shared_proto_db/metadata/MANIFEST-000001
-2025/05/26-17:09:40.390 5427 Recovering log #3
-2025/05/26-17:09:40.391 5427 Reusing old log /home/biswajit/Documents/biswajit/eventsthal/highloka-web-automation-testing/my_chrome_session_profile_ChatSender/Default/shared_proto_db/metadata/000003.log 
+2025/06/02-12:27:32.671 4d78 Creating DB /home/biswajit/Documents/biswajit/eventsthal/highloka-web-automation-testing/my_chrome_session_profile_ChatSender/Default/shared_proto_db/metadata since it was missing.
+2025/06/02-12:27:32.675 4d78 Reusing MANIFEST /home/biswajit/Documents/biswajit/eventsthal/highloka-web-automation-testing/my_chrome_session_profile_ChatSender/Default/shared_proto_db/metadata/MANIFEST-000001

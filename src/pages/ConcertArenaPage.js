@@ -10,6 +10,11 @@ export class ArenaPage extends BasePage {
   activeConcertItem = By.xpath(APP_CONFIG.POST_LOGIN_HOME_ACTIVE_CONCERT_FIRST_ITEM_XPATH);
   lobbyPageEnterConcertButton = By.xpath(APP_CONFIG.LOBBY_PAGE_ENTER_CONCERT_BUTTON_XPATH);
   arenaFirstReactionButton = By.xpath(APP_CONFIG.CONCERT_ARENA_FIRST_REACTION_BUTTON_XPATH);
+  arenaSecondReactionButton = By.xpath(APP_CONFIG.CONCERT_ARENA_SECOND_REACTION_BUTTON_XPATH);
+  arenaThirdReactionButton = By.xpath(APP_CONFIG.CONCERT_ARENA_THIRED_REACTION_BUTTON_XPATH);
+  arenaFourthReactionButton = By.xpath(APP_CONFIG.CONCERT_ARENA_FOURTH_REACTION_BUTTON_XPATH);
+  arenaFifthReactionButton = By.xpath(APP_CONFIG.CONCERT_ARENA_FIFTH_REACTION_BUTTON_XPATH);
+  arenaSixthReactionButton = By.xpath(APP_CONFIG.CONCERT_ARENA_SIXTH_REACTION_BUTTON_XPATH);
   arenaPageChatInputBox = By.xpath(APP_CONFIG.CONCERT_ARENA_CHAT_INPUT_BOX_XPATH);
   arenaPageChatInputSubmitButton = By.xpath(APP_CONFIG.CONCERT_ARENA_CHAT_INPUT_SUBMIT_BUTTON_XPATH);
   arenaPageNitroModeToggleButton = By.xpath(APP_CONFIG.CONCERT_ARENA_NITRO_MODE_TOGGLE_BUTTON_XPATH);
@@ -70,6 +75,33 @@ export class ArenaPage extends BasePage {
     // Release the mouse button
     await actions.release().perform();
     this.logger.log("Mouse button released on Arena page First Reaction button.");
+
+    await sleep(1000);
+  }
+
+  /**
+    * Click the Arena page Second Reaction button .
+  */
+  async clickArenaSecondReaction(holdDuration = 2000) {
+    // this.logger.log("Attempting to click Arena Page First Reaction Button'.");
+    // const element = await this.waitForElementClickable(this.arenaFirstReactionButton, APP_CONFIG.WAIT_TIME_SHORT); //
+    // const actions = this.driverActions.driver.actions({ async: true }); //
+    // await actions.move({ origin: element }).press().perform(); //
+    // await sleep(3000);
+    // this.logger.log("Clicked Arena page First Reaction button.");
+    this.logger.log(`Attempting to press and hold Arena Page Second Reaction Button for ${holdDuration}ms.`);
+    const element = await this.waitForElementClickable(this.arenaSecondReactionButton, APP_CONFIG.WAIT_TIME_SHORT);
+
+    const actions = this.driverActions.driver.actions({ async: true });
+
+    await actions.move({ origin: element }).press().perform();
+    this.logger.log("Mouse button pressed down on Arena page Second Reaction button.");
+
+    await sleep(holdDuration);
+
+    // Release the mouse button
+    await actions.release().perform();
+    this.logger.log("Mouse button released on Arena page Second Reaction button.");
 
     await sleep(1000);
   }
