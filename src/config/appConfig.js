@@ -60,5 +60,5 @@ export const APP_CONFIG = {
     SCRIPT_TIMEOUT: 30000 ,      // Max time for async script
 
     //Test Email
-    TEST_EMAIL:"yodat48247@dlbazi.com"
+    TEST_EMAIL:"eventpwdless1748843752242@yopmail.com"
 };

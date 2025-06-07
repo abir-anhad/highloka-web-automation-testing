@@ -15,7 +15,7 @@ export class LobbyPage {
     await sleep(5000);
 
     const currentUrl = await this.browserManager.driver.getCurrentUrl();
-    if (!currentUrl.includes('/concerts/may-ondemand/lobby')) {
+    if (!currentUrl.includes('/lobby')) {
       throw new Error('Redirect to lobby failed.');
     }
     this.logger.log('Redirected to lobby page successfully.');
@@ -30,7 +30,7 @@ export class LobbyPage {
     await sleep(5000);
 
     const currentUrl = await this.browserManager.driver.getCurrentUrl();
-    if (!currentUrl.includes('/concerts/may-ondemand/arena')) {
+    if (!currentUrl.includes('/arena')) {
       throw new Error('Redirect to arena page failed.');
     }
     this.logger.log('Successfully redirected to arena page.');
@@ -42,7 +42,7 @@ export class LobbyPage {
     await sleep(3000);
 
     const currentUrl = await this.browserManager.driver.getCurrentUrl();
-    if (!currentUrl.includes('/concerts/may-ondemand/lobby')) {
+    if (!currentUrl.includes('/lobby')) {
       throw new Error('Failed to return to lobby page.');
     }
     this.logger.log('Returned to lobby page.');
