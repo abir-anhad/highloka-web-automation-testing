@@ -23,7 +23,7 @@ async function runContactFormTests() {
 
         logger.log(`Navigating to URL: ${APP_CONFIG.INITIAL_APP_URL}`);
         await browserManager.get(APP_CONFIG.INITIAL_APP_URL);
-        await sleep(20000);
+        await sleep(5000);
 
         await contactPage.navigateToContactPage();
 
@@ -40,6 +40,7 @@ async function runContactFormTests() {
 
         for (const testCase of testCases) {
             try {
+                await sleep(3000);
                 await testCase.call(contactPage);
                 logger.log(`${testCase.name} passed`);
             } catch (err) {
@@ -52,7 +53,7 @@ async function runContactFormTests() {
         testPassed = false;
     } finally {
         logger.log(`Final Result: ${testPassed ? 'PASSED' : 'FAILED'}`);
-        await sleep(1000);
+        await sleep(5000);
         await browserManager.quitDriver();
         process.exit(testPassed ? 0 : 1);
     }

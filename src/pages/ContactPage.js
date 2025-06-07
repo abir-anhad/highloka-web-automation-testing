@@ -13,10 +13,10 @@ export class ContactPage {
     // XPath locators (from your original message)
     this.locators = {
       //fullNameInput: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[1]'
-      fullNameInput:'//*[@id="loginProfileInputName"]',
+      fullNameInput: '//*[@id="loginProfileInputName"]',
       emailInput: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[2]/input',
       mobileInput: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[3]/input',
-      messegeInput:'/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[5]/textarea',
+      messegeInput: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[5]/textarea',
       requestTypeDropdown: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[4]',
       requestTypeOptionAudience: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[4]/div/div[1]',
       requestTypeOptionArtist: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[4]/div/div[2]',
@@ -25,20 +25,21 @@ export class ContactPage {
       submitButton: '/html/body/div/div/main/div/div[1]/div/div/div[2]/div/form/div[6]/button',
 
       // Example validation error containers (update as needed)
-      validationErrorsContainer: '/div/div[2]', // Popup alert container for errors
+      // validationErrorsContainer: '/div/div[2]', // Popup alert container for errors
+      validationErrorsContainer: '/html/body/div/div/main/div/div[1]/div/div/div[2]', // Popup alert container for errors
     };
 
     this.ids = {
-        FullName : ''
+      FullName: ''
     }
   }
 
- async navigateToContactPage() {
-        const contactButtonXPath = "/html/body/div/div/div/nav/div[2]/div/a[4]/span";
-        const contactButton = await this.driver.findElement(By.xpath(contactButtonXPath));
-        await contactButton.click();
-        this.logger.log("Navigated to Contact Us page.");
-    }
+  async navigateToContactPage() {
+    const contactButtonXPath = "/html/body/div/div/div/nav/div[2]/div/a[4]/span";
+    const contactButton = await this.driver.findElement(By.xpath(contactButtonXPath));
+    await contactButton.click();
+    this.logger.log("Navigated to Contact Us page.");
+  }
 
   // Helper: find element by XPath
   async findElement(xpath) {
@@ -50,18 +51,18 @@ export class ContactPage {
     const el = await this.findElement(xpath);
     await el.clear();
   }
-// Helper: find element by ID
-async findElementById(id) {
-  return await this.driver.findElement({ id });
-}
+  // Helper: find element by ID
+  async findElementById(id) {
+    return await this.driver.findElement({ id });
+  }
 
-// Helper: clear input field by ID
-async clearFieldById(id) {
-  const el = await this.findElementById(id);
-  await el.clear();
-}
+  // Helper: clear input field by ID
+  async clearFieldById(id) {
+    const el = await this.findElementById(id);
+    await el.clear();
+  }
   // Fill full name field
-async fillFullName(name) {
+  async fillFullName(name) {
     const el = await this.findElement(this.locators.fullNameInput);
     await el.clear();
     await el.sendKeys(name);
@@ -97,7 +98,7 @@ async fillFullName(name) {
     const audienceRadioButton = await this.findElement(this.locators.requestTypeOptionArtist);
     await audienceRadioButton.click();
     this.logger.log('Selected Request Type: Audience');
-}
+  }
 
   // Clear all fields
   async clearAllFields() {
@@ -107,14 +108,14 @@ async fillFullName(name) {
     // For dropdown, you can reset by clicking and selecting a blank option if applicable
     this.logger.log('Cleared all form fields.');
   }
-  
+
 
   //by ID
   async clearAllFieldByID() {
     await this.clearFieldById(id1);
     await this.clearFieldById(id2);
     await this.clearField(id3);
-    
+
     this.logger.log('Cleared all form fields.');
   }
 
@@ -166,6 +167,7 @@ async fillFullName(name) {
 
   // Check if error popup with all required field messages is visible
   async areAllRequiredErrorsVisible() {
+    this.logger.log(`areAllRequiredErrorsVisible this.locators.validationErrorsContainer`, this.locators.validationErrorsContainer)
     try {
       const popup = await this.driver.findElement({ xpath: this.locators.validationErrorsContainer });
       const text = await popup.getText();
@@ -287,94 +289,95 @@ async fillFullName(name) {
   }
 
 
-// 1. Submit form blank and expect all required errors
-async testBlankSubmission() {
-this.logger.log('Running testBlankSubmission...');
-await this.clearAllFields();
-await this.submitForm();
-
-const allErrorsVisible = await this.areAllRequiredErrorsVisible();
-if (!allErrorsVisible) throw new Error('Expected all required field errors to be visible.');
-}
-
-// 2. Submit form with invalid email, expect email error
-async testInvalidEmail() {
-this.logger.log('Running testInvalidEmail...');
-await this.clearAllFields();
-await this.fillValidOtherFields(); // full name, mobile, request type valid
-await this.fillEmail('invalid-email'); // deliberately invalid
-await this.submitForm();
-
-const emailErrorVisible = await this.isEmailErrorVisible();
-if (!emailErrorVisible) throw new Error('Expected email validation error to be visible.');
-}
-
-// 3. Submit form with invalid mobile, expect mobile error
-async testInvalidMobile() {
-this.logger.log('Running testInvalidMobile...');
-await this.clearAllFields();
-await this.fillValidOtherFieldsExceptMobile(); // full name, email, request type valid
-await this.fillMobile('123abc'); // deliberately invalid mobile
-await this.submitForm();
-
-const mobileErrorVisible = await this.isMobileErrorVisible();
-if (!mobileErrorVisible) throw new Error('Expected mobile validation error to be visible.');
-}
-
-// 4. Submit form with unusual full name, expect no error (validity depends on app)
-async testUnusualFullName() {
-this.logger.log('Running testUnusualFullName...');
-await this.clearAllFields();
-await this.fillEmail('validuser@example.com');
-await this.fillMobile('9876543210');
-await this.selectRequestTypeAudience();
-await this.fillFullName('Äëïôü ßØŁ'); // unusual characters
-await this.submitForm();
-
-const fullNameError = await this.isFullNameErrorVisible();
-if (fullNameError) throw new Error('Did not expect full name error for unusual name.');
-}
-
-// 5. Submit form missing request type, expect request type error
-async testMissingRequestType() {
-this.logger.log('Running testMissingRequestType...');
-await this.clearAllFields();
-await this.fillValidFieldsExceptRequestType(); // all except request type selected
-await this.submitForm();
-
-const requestTypeErrorVisible = await this.isRequestTypeErrorVisible();
-if (!requestTypeErrorVisible) throw new Error('Expected request type validation error to be visible.');
-}
-
-// 6. Submit form with excessively large inputs, expect payload size error or rejection
-async testExcessiveInput() {
-this.logger.log('Running testExcessiveInput...');
-await this.clearAllFields();
-const hugeString = 'a'.repeat(10000); // 10k chars, adjust based on app limits
-await this.fillFullName(hugeString);
-await this.fillEmail(`${hugeString}@example.com`);
-await this.fillMobile('9876543210');
-await this.fillMessege('Testing..1..2..3')
-await this.selectRequestTypeAudience();
-await this.submitForm();
-
-const payloadError = await this.isPayloadRejectedOrErrorVisible();
-if (!payloadError) throw new Error('Expected payload size error or rejection.');
-}
-
-// 7. Test rapid multiple submissions - expect rate limiting or button disable
-async testRapidSubmissions() {
-this.logger.log('Running testRapidSubmissions...');
-await this.clearAllFields();
-await this.fillValidFields();
-
-// Submit rapidly 3 times
-for (let i = 0; i < 3; i++) {
+  // 1. Submit form blank and expect all required errors
+  async testBlankSubmission() {
+    this.logger.log('Running testBlankSubmission...');
+    await this.clearAllFields();
     await this.submitForm();
-}
 
-const rateLimitOrDisabled = await this.isRateLimitOrButtonDisabled();
-if (!rateLimitOrDisabled) throw new Error('Expected rate limiting or button disabled on rapid submits.');
-}
+    const allErrorsVisible = await this.areAllRequiredErrorsVisible();
+    if (!allErrorsVisible) throw new Error('Expected all required field errors to be visible.');
+  }
+
+  // 2. Submit form with invalid email, expect email error
+  async testInvalidEmail() {
+    this.logger.log('Running testInvalidEmail...');
+    await this.clearAllFields();
+    await this.fillValidOtherFields(); // full name, mobile, request type valid
+    await this.fillEmail('abc123'); // deliberately invalid
+    await this.submitForm();
+
+    const emailErrorVisible = await this.isEmailErrorVisible();
+    if (!emailErrorVisible) throw new Error('Expected email validation error to be visible.');
+  }
+
+  // 3. Submit form with invalid mobile, expect mobile error
+  async testInvalidMobile() {
+    this.logger.log('Running testInvalidMobile...');
+    await this.clearAllFields();
+    await this.fillValidOtherFieldsExceptMobile(); // full name, email, request type valid
+    await this.fillMobile('123abc'); // deliberately invalid mobile
+    await this.submitForm();
+
+    const mobileErrorVisible = await this.isMobileErrorVisible();
+    if (!mobileErrorVisible) throw new Error('Expected mobile validation error to be visible.');
+  }
+
+  // 4. Submit form with unusual full name, expect no error (validity depends on app)
+  async testUnusualFullName() {
+    this.logger.log('Running testUnusualFullName...');
+    await this.clearAllFields();
+    await this.fillEmail('validuser@example.com');
+    await this.fillMobile('9876543210');
+    await this.selectRequestTypeAudience();
+    await this.fillFullName('Äëïôü ßØŁ'); // unusual characters
+    await this.submitForm();
+
+    const fullNameError = await this.isFullNameErrorVisible();
+    if (!fullNameError) throw new Error('Did not expect full name error for unusual name.');
+  }
+
+  // 5. Submit form missing request type, expect request type error
+  async testMissingRequestType() {
+    this.logger.log('Running testMissingRequestType...');
+    await this.clearAllFields();
+    await this.fillValidFieldsExceptRequestType(); // all except request type selected
+    await this.submitForm();
+
+    const requestTypeErrorVisible = await this.isRequestTypeErrorVisible();
+    if (!requestTypeErrorVisible) throw new Error('Expected request type validation error to be visible.');
+  }
+
+  // 6. Submit form with excessively large inputs, expect payload size error or rejection
+  async testExcessiveInput() {
+    this.logger.log('Running testExcessiveInput...');
+    await this.clearAllFields();
+    const hugeString = 'a'.repeat(10000); // 10k chars, adjust based on app limits
+    await this.fillFullName(hugeString);
+    await this.fillEmail(`${hugeString}@example.com`);
+    await this.fillMobile('9876543210');
+    await this.fillMessege('Testing..1..2..3')
+    await this.selectRequestTypeAudience();
+    await this.submitForm();
+
+    const payloadError = await this.isPayloadRejectedOrErrorVisible();
+    if (!payloadError) throw new Error('Expected payload size error or rejection.');
+  }
+
+  // 7. Test rapid multiple submissions - expect rate limiting or button disable
+  async testRapidSubmissions() {
+    this.logger.log('Running testRapidSubmissions...');
+    await this.clearAllFields();
+    await this.fillValidFields();
+
+    // Submit rapidly 3 times
+    for (let i = 0; i < 3; i++) {
+      
+      await this.submitForm();
+    }
+
+    const rateLimitOrDisabled = await this.isRateLimitOrButtonDisabled();
+    if (!rateLimitOrDisabled) throw new Error('Expected rate limiting or button disabled on rapid submits.');
+  }
 
 }

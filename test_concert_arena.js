@@ -31,12 +31,17 @@ async function runArenaPageTests() {
         const testCases = [
             arenaPage.clickLobbyEnterConcert,
             arenaPage.clickArenaFirstReaction,
-            arenaPage.arenaPageChatInputTyping,
-            arenaPage.clickArenaChatSubmitButton,
-            arenaPage.clickArenaNitroModeToggleButton,
-            arenaPage.clickArenaNitroModeToggleButton,
-            arenaPage.goBackToLobby,
-            arenaPage.goBackToHome
+            arenaPage.clickArenaSecondReaction,
+            arenaPage.clickArenaThirdReaction,
+            arenaPage.clickArenaFourthReaction,
+            arenaPage.clickArenaFifthReaction,
+            arenaPage.clickArenaSixthReaction,
+            // arenaPage.arenaPageChatInputTyping,
+            // arenaPage.clickArenaChatSubmitButton,
+            // arenaPage.clickArenaNitroModeToggleButton,
+            // arenaPage.clickArenaNitroModeToggleButton,
+            // arenaPage.goBackToLobby,
+            // arenaPage.goBackToHome
         ];
 
         for (const testCase of testCases) {

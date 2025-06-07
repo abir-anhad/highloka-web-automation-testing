@@ -48,10 +48,11 @@ async function runLoginAndProfileSaveTest() {
 
     logger.log('Clicking "Verify OTP" button...');
     const verifyButton = await browserManager.driver.findElement({ xpath: VERIFY_OTP_BUTTON_XPATH });
+    await sleep(5000);
     await verifyButton.click();
 
     logger.log('Waiting for post-login redirect...');
-    await sleep(10000);
+    await sleep(30000);
 
     logger.log('Login and profile save test completed.');
   } catch (error) {
