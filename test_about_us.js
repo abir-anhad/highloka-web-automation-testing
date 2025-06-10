@@ -31,6 +31,7 @@ async function runAboutUsPageTests() {
       aboutUsPage.checkWelcomeHeader,
       aboutUsPage.checkHeroSection,
       aboutUsPage.scrollDownAndUp,
+      aboutUsPage.clickExploreButton
     ];
 
     for (const testCase of testCases) {
@@ -47,7 +48,7 @@ async function runAboutUsPageTests() {
     testPassed = false;
   } finally {
     logger.log(`Final Result: ${testPassed ? 'PASSED' : 'FAILED'}`);
-    await sleep(1000);
+    await sleep(5000);
     await browserManager.quitDriver();
     process.exit(testPassed ? 0 : 1);
   }

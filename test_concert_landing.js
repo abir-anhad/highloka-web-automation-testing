@@ -1,13 +1,13 @@
 import { BrowserManager } from './src/core/BrowserManager.js';
 import { Logger } from './src/utils/Logger.js';
-import { ArenaPage } from './src/pages/ConcertArenaPage.js';
+import { ConcertLandingPage } from './src/pages/ConcertLanding.js';
 import { APP_CONFIG } from './src/config/appConfig.js';
 import { sleep } from './src/utils/helpers.js';
 
-async function runArenaPageTests() {
-    const logger = new Logger('ArenaPageTests');
+async function runConcertLandingTests() {
+    const logger = new Logger('ConcertLandingTests');
     const browserManager = new BrowserManager();
-    let arenaPage;
+    let concertLandingPage;
     let testPassed = true;
 
     logger.log('RUN the test_login script first else This TEST SUITE WILL FAIL');
@@ -16,7 +16,7 @@ async function runArenaPageTests() {
         await browserManager.buildDriver();
         await browserManager.maximizeWindow();
 
-        arenaPage = new ArenaPage(browserManager, logger);
+        concertLandingPage = new ConcertLandingPage(browserManager, logger);
 
         // Step 1: Go to home page
         logger.log(`Navigating to home page: ${APP_CONFIG.INITIAL_APP_URL}`);
@@ -24,30 +24,26 @@ async function runArenaPageTests() {
         await sleep(8000);
 
         // Step 2: Click on concert tile in My Events
-        await arenaPage.clickActiveConcert();
+        await concertLandingPage.clickActiveConcert();
 
 
         // Step 3: Run lobby test actions
         const testCases = [
-            arenaPage.clickLobbyEnterConcert,
-            arenaPage.clickArenaFirstReaction,
-            arenaPage.clickArenaSecondReaction,
-            arenaPage.clickArenaThirdReaction,
-            arenaPage.clickArenaFourthReaction,
-            arenaPage.clickArenaFifthReaction,
-            arenaPage.clickArenaSixthReaction,
-            // arenaPage.arenaPageChatInputTyping,
-            // arenaPage.clickArenaChatSubmitButton,
-            // arenaPage.clickArenaNitroModeToggleButton,
-            // arenaPage.clickArenaNitroModeToggleButton,
-            // arenaPage.goBackToLobby,
-            // arenaPage.goBackToHome
+            concertLandingPage.clickLobbyEnterConcert,
+            concertLandingPage.clickConcertLandingEnterConcert,
+            concertLandingPage.goBackToConcertLanding,
+            concertLandingPage.hereGlimpseSectionScrollDown,
+            concertLandingPage.clickConcertLandingOnDemandVideo,
+            concertLandingPage.clickConcertLandingOnDemandVideo,
+            concertLandingPage.bottomSectionScrollDown,
+            concertLandingPage.clickConcertLandingBottomEnterConcert,
+            concertLandingPage.goBackToConcertLanding
         ];
 
         for (const testCase of testCases) {
             try {
                 await sleep(3000);
-                await testCase.call(arenaPage);
+                await testCase.call(concertLandingPage);
                 logger.log(`${testCase.name} passed`);
             } catch (err) {
                 logger.error(`${testCase.name} failed`, err);
@@ -66,4 +62,4 @@ async function runArenaPageTests() {
     }
 }
 
-runArenaPageTests();
+runConcertLandingTests();

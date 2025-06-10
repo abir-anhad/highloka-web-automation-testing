@@ -100,6 +100,7 @@ export const APP_CONFIG = {
 
     POST_LOGIN_HOME_ACTIVE_CONCERT_FIRST_ITEM_XPATH: "/html/body/div/div/main/div[1]/div[2]/div[1]/div/div/div/div/div/div",
     LOBBY_PAGE_ENTER_CONCERT_BUTTON_XPATH: "/html/body/div/div/main/div/section/div/div[1]/div[2]/div/div[2]/a",
+    LOBBY_PAGE_VIEW_DETAILS_TEXT_XPATH: "/html/body/div/div/main/div/section/div/div[1]/div[2]/div/div[2]/p",
     CONCERT_ARENA_FIRST_REACTION_BUTTON_XPATH: "/html/body/div[1]/div/main/div/div[2]/div[2]/div/div[1]/div/div[1]/button",
     CONCERT_ARENA_SECOND_REACTION_BUTTON_XPATH: "/html/body/div/div/main/div/div[2]/div[2]/div/div[1]/div/div[2]/button",
     CONCERT_ARENA_THIRED_REACTION_BUTTON_XPATH: "/html/body/div/div/main/div/div[2]/div[2]/div/div[1]/div/div[3]/button",
@@ -109,6 +110,12 @@ export const APP_CONFIG = {
     CONCERT_ARENA_CHAT_INPUT_BOX_XPATH: "/html/body/div[1]/div/main/div/div[2]/div[1]/div[2]/div[4]/div/div[2]/div/form/input",
     CONCERT_ARENA_CHAT_INPUT_SUBMIT_BUTTON_XPATH: "/html/body/div[1]/div/main/div/div[2]/div[1]/div[2]/div[4]/div/div[2]/div/form/div/button",
     CONCERT_ARENA_NITRO_MODE_TOGGLE_BUTTON_XPATH: "/html/body/div[1]/div/main/div/div[2]/div[2]/div/div[2]/div[1]/div",
+
+    CONCERT_LANDING_TOP_SECTION_ENTER_CONCERT_BUTTON_XPATH: "/html/body/div/div/main/section[1]/div/div[1]/div[2]/div[6]/div/div",
+    CONCERT_LANDING_GLIMPSE_SECTION_XPATH: "/html/body/div/div/main/section[3]/div/div[2]/div",
+    CONCERT_LANDING_GLIMPSE_SECTION_VIDEO_CLICK_XPATH: "/html/body/div/div/main/section[3]/div/div[2]/div/div",
+    CONCERT_LANDING_BOTTOM_SECTION_XPATH: "/html/body/div/div/main/section[5]/div/div/div[2]",
+    CONCERT_LANDING_BOTTOM_SECTION_ENTER_CONCERT_BUTTON_XPATH: "/html/body/div/div/main/section[5]/div/div/div[2]/div[6]/div/div",
 
 
 

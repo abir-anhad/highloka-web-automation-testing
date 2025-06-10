@@ -24,6 +24,12 @@ export class AboutUsPage {
       throw new Error('Hero section not visible');
     }
   }
+  async clickExploreButton() {
+    const exploreButtonXPath = '/html/body/div/div/main/div/div[2]/div[2]/div/div[5]/button';
+    this.logger.log('Checking for Hero section...');
+    const exploreButtonElement = await this.driver.findElement({ xpath: exploreButtonXPath });
+    await exploreButtonElement.click();
+  }
 
   async scrollDownAndUp() {
     const scrollContainerXPath = '/html/body/div/div/main';
@@ -36,7 +42,7 @@ export class AboutUsPage {
     await new Promise(res => setTimeout(res, 2000));
 
     // Scroll back up
-    await this.driver.executeScript("arguments[0].scrollTop = 0", scrollableDiv);
-    await new Promise(res => setTimeout(res, 2000));
+    // await this.driver.executeScript("arguments[0].scrollTop = 0", scrollableDiv);
+    // await new Promise(res => setTimeout(res, 2000));
   }
 }
