@@ -7,7 +7,7 @@ import { BrowserManager } from '../core/BrowserManager.js';
 export class PostLoginHomePage {
   constructor(browserManager, logger) {
     this.browserManager = browserManager;
-     this.driver = browserManager.driver;
+    this.driver = browserManager.driver;
     this.logger = logger;
   }
   //USER PROFILE TESTS-------------------------------------------------------------------------------------------------------------------------------//
@@ -18,6 +18,23 @@ export class PostLoginHomePage {
     await userMenu.click();
     await sleep(2000);
   }
+
+  async clickChangeImageText() {
+    const xpath = '/html/body/div/div/main/div[1]/div[1]/div/div/div[2]/div/p[1]/label';
+    this.logger.log('Clicking "Change Image" text...');
+    const editButton = await this.browserManager.driver.findElement({ xpath });
+    await editButton.click();
+    await sleep(5000);
+  }
+
+  async clickDeleteImageText() {
+    const xpath = '/html/body/div/div/main/div[1]/div[1]/div/div/div[2]/div/p[2]';
+    this.logger.log('Clicking "Delete Image" text...');
+    const deleteButton = await this.browserManager.driver.findElement({ xpath });
+    await deleteButton.click();
+    await sleep(5000);
+  }
+
 
   async clickEditFirstNameButton() {
     const xpath = '/html/body/div/div/main/div[1]/div[4]/div/form/div/div[1]/button';
@@ -61,8 +78,8 @@ export class PostLoginHomePage {
   }
 
   async clickHomeButton() {
-    
-    const xpath = '/html/body/div/div/div[1]/nav/div[2]/div/a[1]/span'; 
+
+    const xpath = '/html/body/div/div/div[1]/nav/div[2]/div/a[1]/span';
     this.logger.log('Clicking Home button to return to homepage...');
     const homeButton = await this.browserManager.driver.findElement({ xpath });
     await homeButton.click();
@@ -74,7 +91,7 @@ export class PostLoginHomePage {
     const nameHeaderXPath = '/html/body/div/div/main/div[1]/div[1]/div/div/div[2]/h3';
 
     this.logger.log('Reopening user menu to verify updated name...');
-    
+
     const userMenuBtn = await this.browserManager.driver.findElement({ xpath: userMenuXPath });
     await userMenuBtn.click();
     await sleep(3000);
@@ -92,7 +109,7 @@ export class PostLoginHomePage {
 
 
   //Explore Button Test----------------------------------------------------------------------------------------------------------------------
-   async clickExploreButton() {
+  async clickExploreButton() {
     const xpath = '/html/body/div/div/main/div[1]/div[2]/div[2]/button';
     this.logger.log('Clicking "Explore" button...');
     const exploreButton = await this.browserManager.driver.findElement({ xpath });
@@ -102,7 +119,7 @@ export class PostLoginHomePage {
 
 
   //Concert Tiles test-----------------------------------------------------------------------------------------------------------------------
-  
+
   async scrollDownAndUp() {
     const scrollContainerXPath = '/html/body/div/div/main';
     this.logger.log('Scrolling down and then up...');
@@ -158,7 +175,52 @@ export class PostLoginHomePage {
     }
 
     this.logger.log('"My Events" section loaded successfully.');
-    }
+  }
+
+  //Explore Button
+  async exploreButtonClicking() {
+    const exploreButton = '/html/body/div/div/main/div[1]/div[2]/div[2]/button';
+    this.logger.log('"Explore" button clicking...');
+    const getExploreButton = await this.browserManager.driver.findElement({ xpath: exploreButton });
+    await getExploreButton.click();
+    await sleep(5000);
+    this.logger.log('"Explore" button clicked successfully.');
+  }
+
+  //Active Concert "View Details"
+  async concertViewDetailsButtonClicking() {
+    const viewDetailsButton = '/html/body/div/div/main/div[2]/div/div[2]/div[2]/div/div[1]';
+    this.logger.log('"View Details" button clicking...');
+    const getViewDetailsButton = await this.browserManager.driver.findElement({ xpath: viewDetailsButton });
+    await getViewDetailsButton.click();
+    await sleep(2000);
+    this.logger.log('"View Details" button clicked successfully.');
+  }
+
+  //Active Concert "Buy More Tickets"
+  async concertBuyMoreTicketsButtonClicking() {
+    const buyMoreTicketsButton = '/html/body/div/div/main/div[2]/div/div[2]/div[2]/div/div[3]';
+    this.logger.log('"Buy More Tickets" button clicking...');
+    const getBuyMoreTicketsButton = await this.browserManager.driver.findElement({ xpath: buyMoreTicketsButton });
+    await getBuyMoreTicketsButton.click();
+    await sleep(2000);
+    this.logger.log('"Buy More Tickets" button clicked successfully.');
+  }
+
+  //Active Concert "Enter Concert"
+  async concertEnterConcertButtonClicking() {
+    const enterConcertButton = '/html/body/div/div/main/div[2]/div/div[2]/div[2]/div/div[2]';
+    this.logger.log('"Enter Concert" button clicking...');
+    const getEnterConcertButton = await this.browserManager.driver.findElement({ xpath: enterConcertButton });
+    await getEnterConcertButton.click();
+    await sleep(2000);
+    this.logger.log('"Enter Concert" button clicked successfully.');
+  }
+
+
+
+
+
 
   //MENU TESTS-------------------------------------------------------------------------------------------------------------------
 
@@ -216,7 +278,7 @@ export class PostLoginHomePage {
     this.logger.log('All menu options loaded successfully.');
   }
 
-  async clickAndVerifyRedirect(optionName,linkXPath, expectedUrl) {
+  async clickAndVerifyRedirect(optionName, linkXPath, expectedUrl) {
     this.logger.log(`Opening menu to click ${optionName}...`);
 
     // Reopen menu
@@ -270,7 +332,7 @@ export class PostLoginHomePage {
     ];
 
     for (const test of navTests) {
-      await this.clickAndVerifyRedirect(test.name,test.linkXPath, test.url);
+      await this.clickAndVerifyRedirect(test.name, test.linkXPath, test.url);
     }
 
     this.logger.log("All redirection tests passed successfully.");

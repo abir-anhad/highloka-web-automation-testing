@@ -25,6 +25,8 @@ async function runHomeProfileEditTests() {
 
     const testCases = [
       homePage.openUserMenu,
+      homePage.clickChangeImageText,
+      homePage.clickDeleteImageText,
       homePage.clickEditFirstNameButton,
       homePage.editFirstName,
       homePage.clickEditLasttNameButton,
@@ -36,6 +38,16 @@ async function runHomeProfileEditTests() {
       homePage.clickEnterConcertAndCheckRedirect,
       homePage.returnToHomePage,
       homePage.verifyMyEventsLoaded,
+      homePage.exploreButtonClicking,
+      homePage.concertViewDetailsButtonClicking,
+      homePage.returnToHomePage,
+      homePage.exploreButtonClicking,
+      homePage.concertBuyMoreTicketsButtonClicking,
+      homePage.returnToHomePage,
+      homePage.exploreButtonClicking,
+      homePage.concertEnterConcertButtonClicking,
+      homePage.returnToHomePage,
+      homePage.exploreButtonClicking,
       homePage.openTopRightMenuAndVerifyOptions,
       homePage.testMenuRedirections,
       homePage.logoutAndVerify
@@ -55,7 +67,7 @@ async function runHomeProfileEditTests() {
     testPassed = false;
   } finally {
     logger.log(`Final Result: ${testPassed ? 'PASSED' : 'FAILED'}`);
-    await sleep(1000);
+    await sleep(5000);
     await browserManager.quitDriver();
     process.exit(testPassed ? 0 : 1);
   }
