@@ -99,7 +99,7 @@ export class PostLoginHomePage {
     const nameHeader = await this.browserManager.driver.findElement({ xpath: nameHeaderXPath });
     const actualName = await nameHeader.getText();
 
-    const expectedName = 'Loka 41'; // Souvik Test
+    const expectedName = 'souvik test'; // Souvik Test
     if (actualName !== expectedName) {
       throw new Error(`Name mismatch! Expected: "${expectedName}", Found: "${actualName}"`);
     }
@@ -132,7 +132,7 @@ export class PostLoginHomePage {
 
     // Scroll back up
     await this.driver.executeScript("arguments[0].scrollTop = 0", scrollableDiv);
-    await new Promise(res => setTimeout(res, 2000));
+    await new Promise(res => setTimeout(res, 5000));
   }
 
 
@@ -158,7 +158,7 @@ export class PostLoginHomePage {
 
   async returnToHomePage() {
     this.logger.log('Returning to homepage...');
-    await this.browserManager.get(APP_CONFIG.INITIAL_APP_URL);
+    await this.browserManager.get(`${APP_CONFIG.INITIAL_APP_URL+"/home"}`);
     await sleep(5000); // Wait for home to load again
   }
 
@@ -308,26 +308,26 @@ export class PostLoginHomePage {
       {
         name: 'About',
         logoXPath: '/html/body/div/div/div/div[1]/div/div[1]/span[2]/div/div/img',
-        linkXPath: '//*[@id="__next"]/div/div/div[1]/div/div[1]/span[2]/div/a',
-        url: 'https://test.highloka.com/about_us',
+        linkXPath: '/html/body/div[1]/div/div/div[1]/div/div[1]/span[1]/div/a',
+        url: `${APP_CONFIG.INITIAL_APP_URL+'/about_us'}`,
       },
       {
         name: 'Blog',
         logoXPath: '/html/body/div/div/div/div[1]/div/div[1]/span[3]/div/div/img',
         linkXPath: '/html/body/div/div/div/div[1]/div/div[1]/span[3]/div/a',
-        url: 'https://test.highloka.com/blog',
+        url: `${APP_CONFIG.INITIAL_APP_URL+'/blog'}`
       },
       {
         name: 'Contact',
         logoXPath: '/html/body/div/div/div/div[1]/div/div[1]/span[4]/div/div/img',
         linkXPath: '/html/body/div/div/div/div[1]/div/div[1]/span[4]/div/a',
-        url: 'https://test.highloka.com/contact_us',
+        url: `${APP_CONFIG.INITIAL_APP_URL+'/contact_us'}`
       },
       {
         name: 'Legal',
         logoXPath: '/html/body/div/div/div/div[1]/div/div[1]/span[5]/div/div/img',
         linkXPath: '/html/body/div/div/div/div[1]/div/div[1]/span[5]/div/a',
-        url: 'https://test.highloka.com/legal',
+        url: `${APP_CONFIG.INITIAL_APP_URL+'/legal'}`
       }
     ];
 

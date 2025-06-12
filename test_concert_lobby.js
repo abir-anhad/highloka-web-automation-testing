@@ -20,7 +20,7 @@ async function runLobbyPageTests() {
 
     // Step 1: Go to home page
     logger.log(`Navigating to home page: ${APP_CONFIG.INITIAL_APP_URL}`);
-    await browserManager.get(APP_CONFIG.INITIAL_APP_URL);
+    await browserManager.get(`${APP_CONFIG.INITIAL_APP_URL+'/home'}`);
     await sleep(8000);
 
     // Step 2: Click on concert tile in My Events

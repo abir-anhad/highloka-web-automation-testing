@@ -8,11 +8,12 @@ const GOOGLE_BUTTON_XPATH = '/html/body/div/div/div/div[2]/div/div/div[2]/div[2]
 const EMAIL_INPUT_XPATH = '//*[@id="name"]';
 const SUBMIT_EMAIL_BUTTON_XPATH = '/html/body/div/div/div/div[2]/div/div/div[2]/div[2]/div/div[2]/form/div/button';
 const VERIFY_OTP_BUTTON_XPATH = '/html/body/div/div/div/div[2]/div/div/div[2]/div[2]/div/div[2]/form/button';
+const CHANGE_USERNAME_BUTTON_TEXT = "/html/body/div[1]/div/div/div[2]/div/div/div[2]/div[2]/div/div[2]/form/p/span";
 
 async function runLoginAndProfileSaveTest() {
   const logger = new Logger('LoginProfileTest');
   const browserManager = new BrowserManager();
-  let testPassed = true;
+  let testPassed = true;  
 
   try {
     await browserManager.buildDriver(); // This will use the profile if set in BrowserManager
@@ -42,6 +43,24 @@ async function runLoginAndProfileSaveTest() {
     logger.log('Clicking submit button...');
     const submitButton = await browserManager.driver.findElement({ xpath: SUBMIT_EMAIL_BUTTON_XPATH });
     await submitButton.click();
+
+    logger.log('Waiting for manual OTP entry...');
+    await sleep(5000); // Wait for change Username
+
+
+    const changeUsernameButton = await browserManager.driver.findElement({ xpath: CHANGE_USERNAME_BUTTON_TEXT });
+    await changeUsernameButton.click();
+
+    logger.log('Back to Login Input popup...');
+    await sleep(2000); 
+
+    logger.log('Filling in email...');
+    const emailInputNew = await browserManager.driver.findElement({ xpath: EMAIL_INPUT_XPATH });
+    await emailInputNew.sendKeys(APP_CONFIG.TEST_EMAIL);
+
+    logger.log('Clicking submit button...');
+    const submitButtonNew = await browserManager.driver.findElement({ xpath: SUBMIT_EMAIL_BUTTON_XPATH });
+    await submitButtonNew.click();
 
     logger.log('Waiting for manual OTP entry...');
     await sleep(30000); // Wait for manual OTP entry

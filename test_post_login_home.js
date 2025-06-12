@@ -20,7 +20,7 @@ async function runHomeProfileEditTests() {
     homePage = new PostLoginHomePage(browserManager, logger);
 
     logger.log(`Navigating to home page: ${APP_CONFIG.INITIAL_APP_URL}`);
-    await browserManager.get(APP_CONFIG.INITIAL_APP_URL);
+    await browserManager.get(`${APP_CONFIG.INITIAL_APP_URL+'/home'}`);
     await sleep(10000); // wait for homepage to load
 
     const testCases = [
@@ -34,9 +34,9 @@ async function runHomeProfileEditTests() {
       homePage.clickSave,
       homePage.clickHomeButton,
       homePage.reopenUserMenuAndVerifyName,
+      homePage.returnToHomePage,
       homePage.scrollDownAndUp,
       homePage.clickEnterConcertAndCheckRedirect,
-      homePage.returnToHomePage,
       homePage.verifyMyEventsLoaded,
       homePage.exploreButtonClicking,
       homePage.concertViewDetailsButtonClicking,

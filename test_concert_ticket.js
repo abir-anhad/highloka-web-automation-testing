@@ -19,7 +19,7 @@ async function runConcertLobbyTests() {
     homePage = new PostLoginHomePage(browserManager, logger);
 
     logger.log(`Navigating to home page: ${APP_CONFIG.INITIAL_APP_URL}`);
-    await browserManager.get(APP_CONFIG.INITIAL_APP_URL);
+    await browserManager.get(`${APP_CONFIG.INITIAL_APP_URL+'/home'}`);
     await sleep(10000);
     const testCases = [
       homePage.clickEnterConcertAndCheckRedirect,
